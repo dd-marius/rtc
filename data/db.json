@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@rtc.x",
+      "password": "$2a$10$pVXhgNqe2HEQom8rBiNwq.2OYT69CEIZP9sgGBPcfENHIBNHPpT32",
+      "firstName": "Admin",
+      "lastName": "Marius",
+      "role": 1
+    }
+  ]
+}
