@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "email": "admin@rtc.x",
+      "email": "admin@rtc.ro",
       "password": "$2a$10$pVXhgNqe2HEQom8rBiNwq.2OYT69CEIZP9sgGBPcfENHIBNHPpT32",
       "firstName": "Admin",
       "lastName": "Marius",
