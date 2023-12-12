@@ -7,8 +7,14 @@ function saveToStorage(key, val) {
 export function useLocalStorageState(key, initialState) {
   const [state, setState] = useState(() => {
     const fromStorage = window?.localStorage?.getItem(key);
+    
     if (fromStorage) {
-      return JSON.parse(fromStorage);
+      // Handle special cases when parsing fails if localstorage is corrupt
+      try {
+        return JSON.parse(fromStorage);
+      } catch (error) {
+        return initialState;
+      }
     }
 
     let defaultState = initialState;

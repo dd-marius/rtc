@@ -6,11 +6,13 @@ import { Toaster } from "@/components/ui/toaster"
 import { Nav } from '@/components/Nav/Nav';
 
 import { NotFound } from '@/features/NotFound/NotFound';
-import { Auth } from '@/features/Auth/Auth';
+import { AuthRegister } from '@/features/Auth/AuthRegister';
+import { AuthLogin } from '@/features/Auth/AuthLogin';
 import { AuthContextProvider } from '@/features/Auth/AuthContext';
 import { RequireAuth } from '@/features/Auth/RequireAuth';
 import { Shop } from '@/features/Shop/Shop';
 import { Fav } from '@/features/Fav/Fav';
+
 
 function App() {
   return (
@@ -26,8 +28,8 @@ function App() {
               <Fav />
             </RequireAuth>
           } />
-          <Route path="login" element={<Auth />} />
-          <Route path="register" element={<Auth />} />
+          <Route path="login" element={<AuthLogin />} />
+          <Route path="register" element={<AuthRegister />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Toaster />

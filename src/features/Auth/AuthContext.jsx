@@ -8,6 +8,7 @@ const initialAuth = {
 
 const AuthContext = createContext(null);
 
+// eslint-disable-next-line react/prop-types
 export function AuthContextProvider({ children }) {
   const [auth, setAuth] = useLocalStorageState('auth', initialAuth);
 
@@ -29,6 +30,7 @@ export function AuthContextProvider({ children }) {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useAuthContext() {
   const ctx = useContext(AuthContext);
   if (ctx === null) {
