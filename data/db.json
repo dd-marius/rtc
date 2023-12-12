@@ -4,9 +4,22 @@
       "id": 1,
       "email": "admin@rtc.ro",
       "password": "$2a$10$pVXhgNqe2HEQom8rBiNwq.2OYT69CEIZP9sgGBPcfENHIBNHPpT32",
-      "firstName": "Admin",
-      "lastName": "Marius",
-      "role": 1
+      "nameFirst": "Admin",
+      "nameLast": "Admin"
+    },
+    {
+      "email": "m@rtc.ro",
+      "password": "$2a$10$1okfa0DjmiCWP0R6r0cTD.NHauETgF2OijQ.LmDrZLiApemWFdlMu",
+      "nameFirst": "Client",
+      "nameLast": "Marius",
+      "id": 2
+    },
+    {
+      "email": "client@rtc.ro",
+      "password": "$2a$10$u5aynApskAl47AZ2fBRg5eX278qBJZGU5mfDlMVtkJysWSU1GXUZq",
+      "nameFirst": "Client",
+      "nameLast": "Client",
+      "id": 3
     }
   ]
 }

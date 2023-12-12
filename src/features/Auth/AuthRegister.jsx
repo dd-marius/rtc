@@ -46,7 +46,11 @@ const schemaRegister = z.object({
 
 
 export function AuthRegister() {
-    const { pathname, state } = useLocation();
+    const { state } = useLocation();
+    const { toast } = useToast()  
+    const { login } = useAuthContext();
+    const navigate = useNavigate();
+  
     const form = useForm({
         resolver: zodResolver(schemaRegister),
         defaultValues: {
@@ -58,8 +62,46 @@ export function AuthRegister() {
         },
     })
     
-    function onSubmit(values) {
-        console.log(values)
+    async function onSubmit(values) {
+      // eslint-disable-next-line no-unused-vars
+      const { retypePassword, ...dataForServer } = values;
+      // Try to register via API POST
+      // REFACTOR: Move this to utils/API
+      const data = await fetch(
+        `${apiUrl}/register`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify(dataForServer),
+        }
+      ).then(async (res) => {
+        // Handle response types
+        const data = await res.json();
+        if ( res.status == 400 ) { 
+          toast({ 
+            variant: "destructive",
+            title: "Error!",
+            description: data });
+            return;
+        } else if ( res.status != 201 ) { 
+          toast({ 
+            variant: "destructive",
+            title: "Error!",
+            description: "There was a problem with your request.",});
+            return;
+        } else { return data; }
+      });
+      
+      // If we have an access token we save it to local storage
+      if (data?.accessToken) {
+        // Login (save to local storage)
+        login(data);
+        // Navigate to previous page if available
+        const path = state?.from ?? '/';
+        navigate(path);
+      }
     }
     
     return (

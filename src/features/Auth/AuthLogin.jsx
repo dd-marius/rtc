@@ -33,7 +33,7 @@ const schemaLogin = z.object({
 
 
 export function AuthLogin() {
-  const { pathname, state } = useLocation();
+  const { state } = useLocation();
   const { toast } = useToast()  
   const { login } = useAuthContext();
   const navigate = useNavigate();
@@ -49,6 +49,7 @@ export function AuthLogin() {
   async function onSubmit(values) {
     const dataForServer = {...values}
     // Try to login via API POST
+    // REFACTOR: Move this to utils/API
     const data = await fetch(
       `${apiUrl}/login`,
       {
