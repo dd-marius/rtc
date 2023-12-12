@@ -12,6 +12,7 @@ import { AuthContextProvider } from '@/features/Auth/AuthContext';
 import { RequireAuth } from '@/features/Auth/RequireAuth';
 import { Shop } from '@/features/Shop/Shop';
 import { Fav } from '@/features/Fav/Fav';
+import { Profile } from "@/features/Profile/Profile";
 
 
 function App() {
@@ -26,6 +27,11 @@ function App() {
           <Route path="fav" element={
             <RequireAuth>
               <Fav />
+            </RequireAuth>
+          } />
+          <Route path="profile" element={
+            <RequireAuth>
+              <Profile />
             </RequireAuth>
           } />
           <Route path="login" element={<AuthLogin />} />

@@ -34,7 +34,7 @@ export function Nav() {
             {user && (
                 <>
                 <li className="ml-1 pl-1 pr-1">
-                You are logged in as: <NavLink to="profile">{user.nameLast}!</NavLink>
+                You are logged in as: <NavLink to="profile">{user.nameFirst}!</NavLink>
                 </li>
                 <li className="ml-1 pl-1 pr-1">
                     <a

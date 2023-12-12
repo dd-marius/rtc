@@ -34,7 +34,7 @@ const schemaLogin = z.object({
 
 export function AuthLogin() {
   const { state } = useLocation();
-  const { toast } = useToast()  
+  const { toast } = useToast();
   const { login } = useAuthContext();
   const navigate = useNavigate();
 

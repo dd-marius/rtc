@@ -34,10 +34,10 @@ const schemaRegister = z.object({
     message: "Password must be at least 3 characters.",
   }),
   nameFirst: z.string().min(3, {
-    message: "FirstName must be at least 3 characters.",
+    message: "First Name must be at least 3 characters.",
   }),  
   nameLast: z.string().min(3, {
-    message: "LastName must be at least 3 characters.",
+    message: "Last Name must be at least 3 characters.",
   })
 }).refine((data) => data.password === data.retypePassword, {
   message: "Passwords don't match",
