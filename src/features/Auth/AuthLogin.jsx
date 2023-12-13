@@ -89,7 +89,7 @@ export function AuthLogin() {
 
   return (
     <div className="flex flex-col items-center h-screen">
-      <h1 className="text-2xl font-bold mb-4">Login</h1>
+      <h1 className="text-2xl font-bold mb-4">Autentificare</h1>
       <div className="w-full md:w-1/2 h-auto bg-white p-4 shadow-lg">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -98,7 +98,7 @@ export function AuthLogin() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>Adresa de email:</FormLabel>
                   <FormControl>
                     <Input placeholder="" {...field} />
                   </FormControl>
@@ -111,7 +111,7 @@ export function AuthLogin() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>Parola:</FormLabel>
                   <FormControl>
                     <Input placeholder="" type="password" {...field} />
                   </FormControl>
@@ -119,7 +119,7 @@ export function AuthLogin() {
                 </FormItem>
               )}
             />
-            <Button type="submit">Login</Button>
+            <Button type="submit">Autentificare</Button>
           </form>
         </Form>
       </div>

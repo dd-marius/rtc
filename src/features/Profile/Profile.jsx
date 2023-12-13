@@ -1,14 +1,8 @@
 import { useForm } from "react-hook-form";
-
-import { useToast } from "@/components/ui/use-toast"
+import { toast } from 'react-toastify';
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-
-import { useAuthContext } from '@/features/Auth/AuthContext';
-
-const apiUrl = import.meta.env.VITE_API_URL;
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -21,32 +15,35 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
+import { useApi } from '@/hooks/useApi';
+import { useAuthContext } from '@/features/Auth/AuthContext';
+
 
 const schemaProfile = z.object({
     email: z.string().email({
-        message: "Please enter a valid email address.",
+        message: "Va rugam introduceti o adresa de e-mail valida.",
     }),
     nameFirst: z.string().min(3, {
-        message: "FirstName must be at least 3 characters.",
+        message: "Prenumele trebuie sa contina minim 3 caractere.",
     }),  
     nameLast: z.string().min(3, {
-        message: "LastName must be at least 3 characters.",
+        message: "Numele trebuie sa contina minim 3 caractere.",
     }),
     newPassword: z.string().min(3, {
-        message: "Password must be at least 3 characters.",
+        message: "Parola trebuie sa contina minim 3 caractere.",
     }).optional().or(z.literal('')),
     newPasswordConfirm: z.string().min(3, {
-        message: "Password must be at least 3 characters.",
+        message: "Parola (pentru confirmare) trebuie sa contina minim 3 caractere.",
     }).optional().or(z.literal(''))
   }).refine((data) => data.newPassword === data.newPasswordConfirm, {
-    message: "New password does not match!",
+    message: "Va rugam verificati ca parola noua sa corespunda in ambele campuri.",
     path: ["newPasswordConfirm"],
 });
  
 
 export function Profile() {
     const { user, accessToken, login } = useAuthContext();
-    const { toast } = useToast();
+    const { patch } = useApi('users');
 
     const form = useForm({
         resolver: zodResolver(schemaProfile),
@@ -69,57 +66,23 @@ export function Profile() {
 
         // Check if we have any changes to the profile data
         if ( Object.keys(dataForServer).length === 0 ) {
-            toast({ 
-                title: "Notification:",
-                description: "No changes have been detected in your profile information."
-            });
+            toast.info("Nu a fost detectata nici o schimbare la profilul dvs.")
             return;
         }
-        
-        // REFACTOR: Move this to utils/API
-        const data = await fetch(
-            `${apiUrl}/users/${user.id}`,
-            {
-              method: 'PATCH',
-              headers: {
-                'Content-type': 'application/json',
-                'Authorization': `Bearer ${accessToken}`
-              },
-              body: JSON.stringify(dataForServer),
-            }
-          ).then(async (res) => {
-            // Handle response types
-            const data = await res.json();
-            if ( res.status == 400 ) { 
-                toast({ 
-                variant: "destructive",
-                title: "Error!",
-                description: data });
-                return false;
-            } else if ( res.status != 200 ) { 
-                toast({ 
-                variant: "destructive",
-                title: "Error!",
-                description: "There was a problem with your request.",});
-                return false;
-            } else { 
-                return data; 
-            } 
-        });
+
+        const data = await patch(user.id, dataForServer, { accessToken });
 
         // If we have data here we need to update context
-        if (data !== false) {
-            // Update login data in localstorage (profile information has changed)
-            // REFACTOR: Make a dedicated function to update profile info?
-            login({ 
-                accessToken: accessToken,
-                user: data,
-            });
-            // Notify user
-            toast({ 
-                title: "Success!",
-                description: "Your profile information has been succesfully updated."
-            });
+        if (data != null) {
+          // Update login data in localstorage (profile information has changed)
+          login({ 
+              accessToken: accessToken,
+              user: data,
+          });
+          // Notify user
+          toast.success('Informatiile dvs. au fost modificate cu succes.');
+        } else {
+          // toast.error('A aparut o eroare!');
         }
     }
 
@@ -130,7 +93,7 @@ export function Profile() {
         <div className="w-full md:w-1/2 h-auto bg-white p-4 shadow-lg">
         <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <p>User information:</p>
+            <p>Informatii generale:</p>
             <FormField
                 control={form.control}
                 name="email"
@@ -149,7 +112,7 @@ export function Profile() {
                 name="nameFirst"
                 render={({ field }) => (
                 <FormItem>
-                    <FormLabel>First name:</FormLabel>
+                    <FormLabel>Prenume:</FormLabel>
                     <FormControl>
                     <Input placeholder="" {...field} />
                     </FormControl>
@@ -162,7 +125,7 @@ export function Profile() {
                 name="nameLast"
                 render={({ field }) => (
                 <FormItem>
-                    <FormLabel>Last name:</FormLabel>
+                    <FormLabel>Nume:</FormLabel>
                     <FormControl>
                     <Input placeholder="" {...field} />
                     </FormControl>
@@ -170,17 +133,17 @@ export function Profile() {
                 </FormItem>
                 )}
             />
-            <p>Change password:</p>
+            <p>Schimbare parola:</p>
             <FormField
                 control={form.control}
                 name="newPassword"
                 render={({ field }) => (
                 <FormItem>
-                    <FormLabel>New password:</FormLabel>
+                    <FormLabel>Parola noua:</FormLabel>
                     <FormControl>
                     <Input placeholder="" type="password" {...field} />
                     </FormControl>
-                    <FormDescription>Please type your new password.</FormDescription>
+                    <FormDescription>Va rugam introduceti parola noua!</FormDescription>
                     <FormMessage />
                 </FormItem>
                 )}
@@ -190,16 +153,16 @@ export function Profile() {
                 name="newPasswordConfirm"
                 render={({ field }) => (
                 <FormItem>
-                    <FormLabel>Retype your new password:</FormLabel>
+                    <FormLabel>Confirmare parola noua:</FormLabel>
                     <FormControl>
                     <Input placeholder="" type="password" {...field} />
                     </FormControl>
-                    <FormDescription>Please confirm your new password.</FormDescription>
+                    <FormDescription>Va rugam introduceti parola noua din nou pentru confirmare.</FormDescription>
                     <FormMessage />
                 </FormItem>
                 )}
             />
-            <Button type="submit">Update profile</Button>
+            <Button type="submit">Salveaza modificarile</Button>
         </form>
         </Form>
         </div>

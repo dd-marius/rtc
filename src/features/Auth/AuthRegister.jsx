@@ -106,20 +106,20 @@ export function AuthRegister() {
     
     return (
       <div className="flex flex-col items-center h-screen">
-        <h1 className="text-2xl font-bold mb-4">Register</h1>
+        <h1 className="text-2xl font-bold mb-4">Inregistrare</h1>
         <div className="w-full md:w-1/2 h-auto bg-white p-4 shadow-lg">
         <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <FormField
             control={form.control}
             name="email"
             render={({ field }) => (
             <FormItem>
-                <FormLabel>Email:</FormLabel>
+                <FormLabel>Adresa de e-mail:</FormLabel>
                 <FormControl>
                 <Input placeholder="" {...field} />
                 </FormControl>
-                <FormDescription>This is your email address (used to login).</FormDescription>
+                <FormDescription>Veti folosi aceasta adresa de e-mail ca sa va autentificati.</FormDescription>
                 <FormMessage />
             </FormItem>
             )}
@@ -129,11 +129,11 @@ export function AuthRegister() {
             name="password"
             render={({ field }) => (
             <FormItem>
-                <FormLabel>Password:</FormLabel>
+                <FormLabel>Parola:</FormLabel>
                 <FormControl>
                 <Input placeholder="" type="password" {...field} />
                 </FormControl>
-                <FormDescription>This is your password.</FormDescription>
+                <FormDescription>Veti folosi aceasta parola ca sa va autentificati.</FormDescription>
                 <FormMessage />
             </FormItem>
             )}
@@ -143,11 +143,11 @@ export function AuthRegister() {
             name="retypePassword"
             render={({ field }) => (
             <FormItem>
-                <FormLabel>Retype password:</FormLabel>
+                <FormLabel>Confirmare parola:</FormLabel>
                 <FormControl>
                 <Input placeholder="" type="password" {...field} />
                 </FormControl>
-                <FormDescription>Please type your password again.</FormDescription>
+                <FormDescription>Va rugam introduceti parola din nou pentru verificare.</FormDescription>
                 <FormMessage />
             </FormItem>
             )}
@@ -157,11 +157,11 @@ export function AuthRegister() {
             name="nameFirst"
             render={({ field }) => (
             <FormItem>
-                <FormLabel>First name:</FormLabel>
+                <FormLabel>Prenume:</FormLabel>
                 <FormControl>
                 <Input placeholder="" {...field} />
                 </FormControl>
-                <FormDescription>Please provide your First Name.</FormDescription>
+                <FormDescription>Va rugam introduceti Prenumele in acest camp.</FormDescription>
                 <FormMessage />
             </FormItem>
             )}
@@ -171,16 +171,16 @@ export function AuthRegister() {
             name="nameLast"
             render={({ field }) => (
             <FormItem>
-                <FormLabel>Last name:</FormLabel>
+                <FormLabel>Nume:</FormLabel>
                 <FormControl>
                 <Input placeholder="" {...field} />
                 </FormControl>
-                <FormDescription>Please provide your Last Name.</FormDescription>
+                <FormDescription>Va rugam introduceti Numele in acest camp.</FormDescription>
                 <FormMessage />
             </FormItem>
             )}
         />
-        <Button type="submit">Register</Button>
+        <Button type="submit">Inregistrare</Button>
         </form>
         </Form>
         </div>

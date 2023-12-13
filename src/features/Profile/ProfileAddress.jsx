@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useToast } from "@/components/ui/use-toast"
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -59,7 +60,6 @@ export function ProfileAddress() {
     const triggerRef = useRef(false);
     const { get, post, patch, remove } = useApi('userAddress');
     const { user, accessToken } = useAuthContext();
-    const { toast } = useToast();
     
     useEffect(() => {
         async function getDataAddresses() {
@@ -84,25 +84,25 @@ export function ProfileAddress() {
     async function handleSubmit(values) {
         if ( domState.keySelected > 0 )
         {
-            //WARNING: Because json-server has no built-in protection for routes you can modify data for other users! DO NOT USE THIS IN PRODUCTION!
+            // WARNING: Because json-server has no built-in protection for routes you can modify data for other users! DO NOT USE THIS IN PRODUCTION!
             const idPatch = domState.keySelected;
             const data = await patch(idPatch, values, { accessToken });
-            //TODO: Handle errors
-            toast({ 
-                title: "Notificare:",
-                description: "Adresa a fost modificata cu succes!"
-            });
+            if (data != null) {
+              toast.success("Adresa a fost modificata cu succes!");
+            } else {
+              toast.error("A aparut o eroare!");
+            }
         } else {
             const newAddress = {...values, userId: user.id};
             const data = await post(newAddress, { accessToken });
-            //TODO: Handle errors
-            toast({ 
-                title: "Notificare:",
-                description: "Noua adresa a fost adaugata cu succes!"
-            });
+            if (data != null) {
+              toast.success("Noua adresa a fost adaugata cu succes!");
+            } else {
+              toast.error("A aparut o eroare!");
+            }
         }
         handleHideForm();
-        // Trigger useEffect refresh to update data via API
+        // NOTE: Trigger useEffect refresh to update data via API
         triggerRef.current = !triggerRef.current;
     }
 
@@ -125,16 +125,16 @@ export function ProfileAddress() {
     }
 
     async function handleActionDelete() {
-        //WARNING: Because json-server has no built-in protection for routes you can modify data for other users! DO NOT USE THIS IN PRODUCTION!
+        // WARNING: Because json-server has no built-in protection for routes you can modify data for other users! DO NOT USE THIS IN PRODUCTION!
         const idDelete = domState.keySelected;
         const data = await remove(idDelete, { accessToken });
-        //TODO: Handle errors
-        toast({ 
-            title: "Notificare:",
-            description: "Adresa a fost stearsa!"
-        });
+        if (data != null) {
+          toast.success("Adresa a fost stearsa!");
+        } else {
+          toast.error("A aparut o eroare!");
+        }
         handleHideForm();
-        // Trigger useEffect refresh to update data via API
+        // NOTE: Trigger useEffect refresh to update data via API
         triggerRef.current = !triggerRef.current;
     }
 

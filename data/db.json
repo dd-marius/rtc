@@ -9,9 +9,9 @@
     },
     {
       "email": "m@rtc.ro",
-      "password": "$2a$10$lYVXBDhyrr/WcYlB.sFn6edEOQlGHyQHRgsrUyXVuvDwETBhbv6Z6",
+      "password": "$2a$10$HMttxRVgHH4KM5B1qCt9teR.fEbLYCUZRneaVUW8/QMxQ1puDrhbO",
       "nameFirst": "Marius",
-      "nameLast": "Client2",
+      "nameLast": "Client",
       "id": 2
     },
     {
@@ -39,7 +39,10 @@
       "address": "Str. Libertatii Nr.10 Bl.X2",
       "city": "Iasi",
       "county": "IS",
-      "phoneNo": "0720 111 222"
+      "phoneNo": "0720 111 222",
+      "nameLast": "Client3",
+      "email": "m@rtc.ro",
+      "nameFirst": "Marius"
     },
     {
       "userId": 2,

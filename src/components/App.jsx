@@ -1,7 +1,8 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
-import { Toaster } from "@/components/ui/toaster"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 import { Nav } from '@/components/Nav/Nav';
 
@@ -14,6 +15,7 @@ import { Shop } from '@/features/Shop/Shop';
 import { Fav } from '@/features/Fav/Fav';
 import { Profile } from "@/features/Profile/Profile";
 import { ProfileAddress } from "@/features/Profile/ProfileAddress";
+
 
 
 function App() {
@@ -40,7 +42,7 @@ function App() {
           <Route path="register" element={<AuthRegister />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <Toaster />
+        <ToastContainer />
       </BrowserRouter>
     </AuthContextProvider>
   );
