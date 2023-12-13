@@ -21,5 +21,43 @@
       "nameLast": "Client",
       "id": 3
     }
+  ],
+  "userAddress": [
+    {
+      "userId": 1,
+      "id": 1,
+      "address": "Bvd. Independentei Nr.1",
+      "city": "Iasi",
+      "county": "IS",
+      "phoneNo": "0733 123 123",
+      "tag": "Home"
+    },
+    {
+      "userId": 2,
+      "id": 2,
+      "tag": "Birou",
+      "address": "Str. Libertatii Nr.10 Bl.X2",
+      "city": "Iasi",
+      "county": "IS",
+      "phoneNo": "0720 111 222"
+    },
+    {
+      "userId": 2,
+      "id": 3,
+      "tag": "Home",
+      "address": "Bvd. Independentei Nr.1",
+      "city": "Iasi",
+      "county": "IS",
+      "phoneNo": "0733 111 222"
+    },
+    {
+      "tag": "Test1",
+      "address": "tttttttttttttttt",
+      "city": "ttttttttttt",
+      "county": "tttttttttttttt",
+      "phoneNo": "ttttttttttttttttttttttttttttttttttt",
+      "userId": 2,
+      "id": 4
+    }
   ]
 }

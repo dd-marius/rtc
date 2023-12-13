@@ -13,6 +13,7 @@ import { RequireAuth } from '@/features/Auth/RequireAuth';
 import { Shop } from '@/features/Shop/Shop';
 import { Fav } from '@/features/Fav/Fav';
 import { Profile } from "@/features/Profile/Profile";
+import { ProfileAddress } from "@/features/Profile/ProfileAddress";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           } />
           <Route path="profile" element={
             <RequireAuth>
+              <ProfileAddress />
               <Profile />
             </RequireAuth>
           } />

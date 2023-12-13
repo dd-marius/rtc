@@ -13,3 +13,5 @@ npm i zod
 npx shadcn-ui@latest add form
 npx shadcn-ui@latest add input
 npx shadcn-ui@latest add toast
+npx shadcn-ui@latest add select
+npx shadcn-ui@latest add card
