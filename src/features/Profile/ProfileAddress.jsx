@@ -1,21 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-
-import { useToast } from "@/components/ui/use-toast"
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-
-import { useAuthContext } from '@/features/Auth/AuthContext';
-
-import { useApi } from '@/hooks/useApi';
-
-
+import { useToast } from "@/components/ui/use-toast"
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -24,13 +15,15 @@ import {
 import {
     Select,
     SelectContent,
-    SelectGroup,
     SelectItem,
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
 
 import { Input } from "@/components/ui/input";
+import { useAuthContext } from '@/features/Auth/AuthContext';
+import { useApi } from '@/hooks/useApi';
+import { DialogConfirm } from "@/components/DialogConfirm/DialogConfirm";
 
 
 const schemaProfile = z.object({
@@ -52,6 +45,7 @@ const schemaProfile = z.object({
 
   });
 
+
 const defaultDomState = {
     isVisible: false,
     keySelected: 0,
@@ -63,22 +57,19 @@ export function ProfileAddress() {
     const [ selectKey, setSelectKey] = useState(0);
     const [ domState, setDomState] = useState(defaultDomState);
     const triggerRef = useRef(false);
-
     const { get, post, patch, remove } = useApi('userAddress');
-
     const { user, accessToken } = useAuthContext();
     const { toast } = useToast();
-
+    
     useEffect(() => {
         async function getDataAddresses() {
           const data = await get({ userId: user?.id }, null, { accessToken });
           setDataAddresses(data);
-          console.log(data);
         }
         getDataAddresses();
-      // HACK: Using triggerRef.current to force trigger of useEfect here to refresh data from API
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [accessToken, user, get, triggerRef.current]);
+        // HACK: Using triggerRef.current to force trigger of useEfect here to refresh data from API
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [accessToken, user, get, triggerRef.current]);
 
     const form = useForm({
         resolver: zodResolver(schemaProfile),
@@ -133,7 +124,7 @@ export function ProfileAddress() {
         setSelectKey(prevKey => prevKey + 1); // HACK: Increment the key to force remount (UI: Refresh list)
     }
 
-    async function handleButtonDelete() {
+    async function handleActionDelete() {
         //WARNING: Because json-server has no built-in protection for routes you can modify data for other users! DO NOT USE THIS IN PRODUCTION!
         const idDelete = domState.keySelected;
         const data = await remove(idDelete, { accessToken });
@@ -161,6 +152,7 @@ export function ProfileAddress() {
         form.setValue("phoneNo","");
     }
 
+
     return (
     <div className="flex flex-col items-center">
         <h1 className="text-2xl font-bold mb-4">Adrese pentru livrare:</h1>
@@ -180,6 +172,7 @@ export function ProfileAddress() {
             </Select>
             )}
             <Button onClick={handleButtonAdd}>Adauga adresa noua</Button>
+            <div className="flex-grow"></div>
             <Button disabled={ ! domState.isVisible } onClick={handleHideForm}>Ascunde</Button>
         </div>
         
@@ -255,10 +248,12 @@ export function ProfileAddress() {
             <div className="flex justify-between">
                 <Button type="submit" className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">{domState.buttonText}</Button>
                 { domState.keySelected !== 0 && (
-                <Button 
-                    onClick={handleButtonDelete}
-                    type="button" 
-                    className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">Sterge</Button>
+                <DialogConfirm 
+                    onAction={handleActionDelete} 
+                    customTitle="Confirmare"
+                    customDescription="Sunteti sigur ca doriti sa stergeti adresa selectata?">
+                    <Button type="button" className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">Sterge</Button>
+                </DialogConfirm>
                 )}
             </div>
         </form>

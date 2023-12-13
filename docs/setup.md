@@ -15,3 +15,6 @@ npx shadcn-ui@latest add input
 npx shadcn-ui@latest add toast
 npx shadcn-ui@latest add select
 npx shadcn-ui@latest add card
+npx shadcn-ui@latest add alert-dialog
+
+npm i react-toastify

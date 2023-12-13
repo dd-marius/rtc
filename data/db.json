@@ -11,7 +11,7 @@
       "email": "m@rtc.ro",
       "password": "$2a$10$lYVXBDhyrr/WcYlB.sFn6edEOQlGHyQHRgsrUyXVuvDwETBhbv6Z6",
       "nameFirst": "Marius",
-      "nameLast": "Client",
+      "nameLast": "Client2",
       "id": 2
     },
     {
@@ -51,11 +51,11 @@
       "phoneNo": "0733 111 222"
     },
     {
-      "tag": "Test1",
-      "address": "tttttttttttttttt",
-      "city": "ttttttttttt",
-      "county": "tttttttttttttt",
-      "phoneNo": "ttttttttttttttttttttttttttttttttttt",
+      "tag": "Test23422",
+      "address": "Testttttttttttttttttttttttttttttttttttttttt",
+      "city": "Iasi",
+      "county": "IS",
+      "phoneNo": "1231231231",
       "userId": 2,
       "id": 4
     }

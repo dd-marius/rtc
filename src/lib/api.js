@@ -1,4 +1,4 @@
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -10,8 +10,8 @@ async function handleServerResponse(res) {
   const dataPromise = res.json();
   if (!res.ok) {
     const message = await dataPromise;
-    // toast.error(message);
-    console.log(message);
+    toast.error(message);
+    console.log("Server error:", message);
     if (res.status === 401 || res.status === 403) {
       throw new UnauthorizedError();
     }
