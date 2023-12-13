@@ -1,14 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form"
-
-import { useToast } from "@/components/ui/use-toast"
+import { toast } from 'react-toastify';
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
-
-import { useAuthContext } from '@/features/Auth/AuthContext';
-
-const apiUrl = import.meta.env.VITE_API_URL;
 
 import { Button } from "@/components/ui/button"
 import {
@@ -20,6 +15,12 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+
+import { useAuthContext } from '@/features/Auth/AuthContext';
+import { useApi } from '@/hooks/useApi';
+
+// Controled via ENV to increase global verbosity
+const v = Number(import.meta.env.VITE_UX_VERBOSITY)
 
 
 const schemaLogin = z.object({
@@ -34,9 +35,9 @@ const schemaLogin = z.object({
 
 export function AuthLogin() {
   const { state } = useLocation();
-  const { toast } = useToast();
   const { login } = useAuthContext();
   const navigate = useNavigate();
+  const { post } = useApi('login');
 
   const form = useForm({
     resolver: zodResolver(schemaLogin),
@@ -47,38 +48,12 @@ export function AuthLogin() {
   })
 
   async function onSubmit(values) {
-    const dataForServer = {...values}
-    // Try to login via API POST
-    // REFACTOR: Move this to utils/API
-    const data = await fetch(
-      `${apiUrl}/login`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify(dataForServer),
-      }
-    ).then(async (res) => {
-      // Handle response types
-      const data = await res.json();
-      if ( res.status == 400 ) { 
-        toast({ 
-          variant: "destructive",
-          title: "Error!",
-          description: data });
-          return;
-      } else if ( res.status != 200 ) { 
-        toast({ 
-          variant: "destructive",
-          title: "Error!",
-          description: "There was a problem with your request.",});
-          return;
-      } else { return data; }
-    });
+    const dataForServer = {...values};
+    const data = await post(dataForServer);
     
-    // If we have an access token we save it to local storage
+    // If we have an access token we save it to local storage (login has been succesful)
     if (data?.accessToken) {
+      v && toast.success("Autentificare reusita!");
       // Login (save to local storage)
       login(data);
       // Navigate to previous page if available
@@ -119,7 +94,9 @@ export function AuthLogin() {
                 </FormItem>
               )}
             />
-            <Button type="submit">Autentificare</Button>
+            <div className="flex justify-center">
+              <Button type="submit">Autentificare</Button>
+            </div>
           </form>
         </Form>
       </div>

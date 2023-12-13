@@ -1,15 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form"
-
-import { useToast } from "@/components/ui/use-toast"
+import { toast } from 'react-toastify';
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
-
-import { useAuthContext } from '@/features/Auth/AuthContext';
-
-const apiUrl = import.meta.env.VITE_API_URL;
-
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -21,6 +15,12 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+
+import { useAuthContext } from '@/features/Auth/AuthContext';
+import { useApi } from '@/hooks/useApi';
+
+// Controled via ENV to increase global verbosity
+const v = Number(import.meta.env.VITE_UX_VERBOSITY)
 
 
 const schemaRegister = z.object({
@@ -46,8 +46,8 @@ const schemaRegister = z.object({
 
 
 export function AuthRegister() {
+    const { post } = useApi('register');
     const { state } = useLocation();
-    const { toast } = useToast()  
     const { login } = useAuthContext();
     const navigate = useNavigate();
   
@@ -65,45 +65,22 @@ export function AuthRegister() {
     async function onSubmit(values) {
       // eslint-disable-next-line no-unused-vars
       const { retypePassword, ...dataForServer } = values;
-      // Try to register via API POST
-      // REFACTOR: Move this to utils/API
-      const data = await fetch(
-        `${apiUrl}/register`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-type': 'application/json',
-          },
-          body: JSON.stringify(dataForServer),
-        }
-      ).then(async (res) => {
-        // Handle response types
-        const data = await res.json();
-        if ( res.status == 400 ) { 
-          toast({ 
-            variant: "destructive",
-            title: "Error!",
-            description: data });
-            return;
-        } else if ( res.status != 201 ) { 
-          toast({ 
-            variant: "destructive",
-            title: "Error!",
-            description: "There was a problem with your request.",});
-            return;
-        } else { return data; }
-      });
-      
-      // If we have an access token we save it to local storage
+
+      const data = await post(dataForServer);
+    
+      // If we have an access token we save it to local storage (registration has been succesful)
       if (data?.accessToken) {
+        v && toast.success("Inregistrare reusita!");
         // Login (save to local storage)
         login(data);
         // Navigate to previous page if available
+        // TODO: Redirect to onboard page?
         const path = state?.from ?? '/';
         navigate(path);
       }
     }
-    
+
+
     return (
       <div className="flex flex-col items-center h-screen">
         <h1 className="text-2xl font-bold mb-4">Inregistrare</h1>
@@ -180,7 +157,10 @@ export function AuthRegister() {
             </FormItem>
             )}
         />
-        <Button type="submit">Inregistrare</Button>
+        <div className="border-t border-dashed border-gray-300 w-full my-4"></div>
+        <div className="flex justify-center">
+          <Button type="submit">Inregistrare</Button>
+        </div>
         </form>
         </Form>
         </div>

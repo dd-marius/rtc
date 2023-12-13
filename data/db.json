@@ -20,6 +20,13 @@
       "nameFirst": "Client",
       "nameLast": "Client",
       "id": 3
+    },
+    {
+      "email": "test@rtc.ro",
+      "password": "$2a$10$22zVmQPw4x3PDXGlcCTmc.tk2Y8DDsqvwfNsHXZ608Emp3e..B4Fe",
+      "nameFirst": "Test",
+      "nameLast": "User",
+      "id": 4
     }
   ],
   "userAddress": [

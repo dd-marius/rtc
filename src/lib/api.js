@@ -11,7 +11,7 @@ async function handleServerResponse(res) {
   if (!res.ok) {
     const message = await dataPromise;
     toast.error(message);
-    console.log("Server error:", message);
+    // console.log("Server error:", message);
     if (res.status === 401 || res.status === 403) {
       throw new UnauthorizedError();
     }
