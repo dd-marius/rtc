@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
+import { uxShowCategoryName } from '@/lib/uxShop';
 
 export function ShopItem({ item }) {
   function uxTrimStringToMaxLength(str, maxLength=200) {
@@ -7,15 +8,6 @@ export function ShopItem({ item }) {
         return str.substring(0, maxLength - 3) + '...';
     }
     return str;
-  }
-  function uxShowCategoryName(type) {
-    if (type == 1) {
-      return "ceai";
-    } else if (type == 2) {
-      return "cafea";
-    } else {
-      return "";
-    }
   }
 
   return (

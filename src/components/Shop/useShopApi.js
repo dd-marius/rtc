@@ -15,7 +15,7 @@ export function useShopApi(id, shouldRequestOnLoad = true) {
       { 
         data = []
       }
-      console.log(data);
+      // console.log(data);
       setData(data);
     }
 
