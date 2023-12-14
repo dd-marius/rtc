@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 
+.header-font-handwriting {
+  font-family: 'Dancing Script', cursive;
+}
+
 .shopItem-one-line-title {
   line-height: 1.5rem;
   height: 1.5rem;

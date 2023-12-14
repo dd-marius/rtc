@@ -84,7 +84,7 @@ export function ShopDetails() {
 
   return (
     <>
-    <Link to="/shop">Back</Link>
+    {/* <Link to="/shop">Back</Link> */}
     <div className="container mx-auto p-4 max-w-[700px] w-full">
     <div className="grid md:grid-cols-2 gap-4">
       <div className="mb-4 md:mb-0">

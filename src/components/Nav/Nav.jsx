@@ -2,55 +2,76 @@ import { NavLink } from "react-router-dom";
 import { useAuthContext } from '@/features/Auth/AuthContext';
 
 export function Nav() {
-    const { user, logout } = useAuthContext();
+  const { user, logout } = useAuthContext();
 
-    return(
-        <nav>
-        <menu className="flex justify-between">
-            <div className="flex">
-                <li className="mr-1">
-                <NavLink to="/">Home</NavLink>
-                </li>
-                <li className="mr-1">
-                <NavLink to="shop">Magazin</NavLink>
-                </li>
-                {user && (
-                <li className="mr-1">
-                <NavLink to="fav">Favorites</NavLink>
-                </li>
-                )}
-            </div>
-            <div className="flex">
-            {user === null && (  
-                <>
-                <li className="ml-1 pl-1 pr-1">
-                <NavLink to="login">Login</NavLink>
-                </li>
-                <li className="ml-1 pl-1 pr-1">
-                <NavLink to="register">Register</NavLink>
-                </li>
-                </>              
-            )}
-            {user && (
-                <>
-                <li className="ml-1 pl-1 pr-1">
-                You are logged in as: <NavLink to="profile">{user.nameFirst}!</NavLink>
-                </li>
-                <li className="ml-1 pl-1 pr-1">
-                    <a
-                    href="#"
-                    onClick={(e) => {
-                        e.preventDefault();
-                        logout();
-                    }}
-                    >
-                    Logout
-                    </a>
-                </li>
-                </>
-            )}
-            </div>
-        </menu>
-        </nav>
-    )
+  return(
+    <nav>
+    <menu className="flex justify-between items-stretch bg-gray-100">
+      <div className="flex">
+        <li className="mr-4 hover:bg-blue-100">
+        <NavLink 
+          className={({ isActive }) => `text-gray-600 hover:text-blue-500 block py-2 px-2 ${isActive ? 'bg-blue-200' : ''}`} 
+          to="/">Home
+        </NavLink>
+        </li>
+        <li className="mr-4 hover:bg-blue-100">
+        <NavLink 
+          className={({ isActive }) => `text-gray-600 hover:text-blue-500 block py-2 px-2 ${isActive ? 'bg-blue-200' : ''}`} 
+          to="shop">Magazin
+        </NavLink>
+        </li>
+        {user && (
+        <li className="mr-4 hover:bg-blue-100">
+        <NavLink 
+          className={({ isActive }) => `text-gray-600 hover:text-blue-500 block py-2 px-2 ${isActive ? 'bg-blue-200' : ''}`} 
+          to="cart">Cos de cumparaturi
+        </NavLink>
+        </li>
+        )}
+      </div>
+      <div className="flex">
+      {user === null && (  
+        <>
+        <li className="ml-4 hover:bg-blue-100">
+          <NavLink 
+            className={({ isActive }) => `text-gray-600 hover:text-blue-500 block py-2 px-2 ${isActive ? 'bg-blue-200' : ''}`} 
+            to="login">Autentificare
+          </NavLink>
+        </li>
+        <li className="ml-4 hover:bg-blue-100">
+          <NavLink 
+            className={({ isActive }) => `text-gray-600 hover:text-blue-500 block py-2 px-2 ${isActive ? 'bg-blue-200' : ''}`} 
+            to="register">Inregistrare
+          </NavLink>
+        </li>
+        </>              
+      )}
+      {user && (
+        <>
+        <li>
+          <p className="block py-2">Utilizator:</p>
+        </li>
+        <li className="ml-4 hover:bg-blue-100">
+          <NavLink 
+            className={({ isActive }) => `text-gray-600 hover:text-blue-500 block py-2 px-2 ${isActive ? 'bg-blue-200' : ''}`} 
+            to="profile">{user.nameFirst}
+          </NavLink>
+        </li>
+        <li className="ml-4 hover:bg-blue-100">
+            <a className="text-gray-600 hover:text-blue-500 block py-2 px-2"
+            href="#"
+            onClick={(e) => {
+                e.preventDefault();
+                logout();
+            }}
+            >
+            Delogare
+            </a>
+        </li>
+        </>
+      )}
+      </div>
+    </menu>
+    </nav>
+  )
 }

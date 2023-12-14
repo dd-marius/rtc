@@ -1,4 +1,5 @@
 {
     "/users*": "/600/users$1",
-    "/userAddress*": "/660/userAddress$1"
+    "/userAddress*": "/660/userAddress$1",
+    "/userCart*": "/660/userCart$1"
 }
