@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.shopItem-one-line-title {
+  line-height: 1.5rem;
+  height: 1.5rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.shopItem-five-line-description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 5; /* Limit to 5 lines */
+  line-height: 1.2rem; /* Adjust line height as needed */
+  max-height: 6rem; /* 5 lines of text, adjust if line-height changes */
+}

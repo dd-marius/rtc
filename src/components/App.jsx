@@ -11,8 +11,8 @@ import { AuthRegister } from '@/features/Auth/AuthRegister';
 import { AuthLogin } from '@/features/Auth/AuthLogin';
 import { AuthContextProvider } from '@/features/Auth/AuthContext';
 import { RequireAuth } from '@/features/Auth/RequireAuth';
-import { Shop } from '@/features/Shop/Shop';
-import { Fav } from '@/features/Fav/Fav';
+import { Shop } from '@/components/Shop/Shop';
+import { Fav } from '@/components/Fav/Fav';
 import { Profile } from "@/features/Profile/Profile";
 import { ProfileAddress } from "@/features/Profile/ProfileAddress";
 

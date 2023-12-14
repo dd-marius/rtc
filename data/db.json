@@ -69,5 +69,192 @@
       "userId": 2,
       "id": 4
     }
+  ],
+  "shop": [
+    {
+      "id": 1,
+      "type": 1,
+      "name": "A Kiss With Hazelnut",
+      "content": "Ceai negru de mare calitate ASSAM CTC, fulgi și bucățele de boabe de cacao, bucățele de alune caramelizate și carmel. Aromă și gust natural de ceai negru și ciocolată cu alune." ,
+      "picture": "/shop/1.jpg",
+      "stock": 20,
+      "price": 300
+    },
+    {
+      "id": 2,
+      "type": 1,
+      "name": "After Lunch",
+      "content": "roiniță, tulsi, bucăți de măr, peppermint, rădăcină de lemn dulce, mușețel, fenicul, chimen, rozmarin, arome naturale, gălbenele. Gust și aromă de vanilie și anise.",
+      "picture": "/shop/2.png",
+      "stock": 20,
+      "price": 310
+    },
+    {
+      "id": 3,
+      "type": 1,
+      "name": "Amintiri din copilărie",
+      "content": "Cea mai bună calitate de rooibos cules din flora spontană a Africii de Sud, în amestec cu bucățele de caramel și alune caramelizate, bucățele de vanilie, aromă și petale de crăițe.",
+      "picture": "/shop/3.jpg",
+      "stock": 20,
+      "price": 325
+    },
+    {
+      "id": 4,
+      "type": 1,
+      "name": "Anastasia BIO",
+      "content": "Verbena, măr, morcov, măr liofilizat, coajă de portocală, lemongrass, piersică liofilizată, aromă naturală, petale de albăstrele roz, boboci de trandafiri persani",
+      "picture": "/shop/4.jpeg",
+      "stock": 20,
+      "price": 498
+    },
+    {
+      "id": 5,
+      "type": 1,
+      "name": "Assam Doomur Dullung",
+      "content": "Acest ceai bine definit, puternic și aromat, este făcut de artizani în domeniu, cu frunze de ceai din cea mai înaltă calitate.",
+      "picture": "/shop/5.png",
+      "stock": 20,
+      "price": 360
+    },
+    {
+      "id": 6,
+      "type": 1,
+      "name": "Berry Dream",
+      "content": "Măceșe, hibiscus, bucăți de măr, fructe de pădure, soc, aromă naturală de vanilie și scortișoară. Gust de cireșe vanilate cu scorțișoară.",
+      "picture": "/shop/6.png",
+      "stock": 20,
+      "price": 310
+    },
+    {
+      "id": 7,
+      "type": 1,
+      "name": "Creola",
+      "content": "Foarte benefic pentru proprietățile sale antioxidante, hepatoprotector, antibacterial, antifungic, bogat în vitamina C, magneziu, calciu, cupru, fier, mangan, potasiu și zinc. Acest amestec, bogat în fitoestrogeni, normalizează ciclul menstrual, atenuează efectele menopauzei, previne osteoporoza, are efecte anti-îmbătrânire, previne infarctul… și multe altele.",
+      "picture": "/shop/7.png",
+      "stock": 20,
+      "price": 340
+    },
+    {
+      "id": 8,
+      "type": 1,
+      "name": "Earl Grey",
+      "content": "Atribuit pe la 1820 – 1850 lui Charles Grey, succesorul lui Earl Grey, fost prim ministru al Angliei și despre care se spune că ar fi primit amestecul de ceai negru cu ulei de bergamotăă ca pe un cadou diplomatic.",
+      "picture": "/shop/8.png",
+      "stock": 20,
+      "price": 280
+    },
+    {
+      "id": 9,
+      "type": 1,
+      "name": "Guardian Angel Oolong",
+      "content": "Conținând câteva sortimente de Oolong de cea mai mare calitate, precum Milky Oolong, Sumatra Oolong, Ben Shan și altele, catifelate și aromate natural cu bucăți de căpșuni și celebrul fruct Tibetan, Goji, este un sortiment deosebit, de mare rafinament, pentru cei ce vor calitate.",
+      "picture": "/shop/9.png",
+      "stock": 20,
+      "price": 990
+    },
+    {
+      "id": 10,
+      "type": 1,
+      "name": "Ice Age",
+      "content": "Cea mai bună calitate de rooibos cules din flora spontană a Africii de Sud, în amestec cu lemongrass, coajă de lămâie, mentă, petale de șofran, petale de floare de portocal.",
+      "picture": "/shop/10.png",
+      "stock": 20,
+      "price": 290
+    },
+    {
+      "id": 11,
+      "type": 2,
+      "name": "Amaretto Coffee",
+      "content": "Un desert excelent, băută simpla, sau în combinație cu lapte, spumă de lapte, înghețată, ciocolata fierbinte, sau chiar in amestec cu alte cafele.",
+      "picture": "/shop/11.jpeg",
+      "stock": 20,
+      "price": 320
+    },
+    {
+      "id": 12,
+      "type": 2,
+      "name": "Cardamom",
+      "content": "Folosit din antichitate şi până în vremurile actuale, cardamomul, din Asia şi până în Orient, face parte din mirodeniile foarte preţuite, apreciate şi folosite în numeroase reţete culinare, băuturi şi infuzii. Apreciat pentru multiplele beneficii aduse sănătăţii dar şi pentru gustul său puternic, cardamomul „decorează” exotic  și intens compoziţia la care participă. Royal Tea & Coffee vă prezintă un amestec de mare calitate de cafea proaspătă arabica aromată cu uleiuri naturale de cardamom.",
+      "picture": "/shop/12.jpeg",
+      "stock": 20,
+      "price": 330
+    },
+    {
+      "id": 13,
+      "type": 2,
+      "name": "Columbia Supremo",
+      "content": "Cea mai bună cafea Arabica din Anzii Cordilieri, Medellin Excelso, din departamentul Antioquia. Recoltată de la 2000 de metri altitudine, transportată și azi în saci (ce au simbolul triunghiular – Juan Valdez) cu ajutorul măgărușilor, datorită terenului accidentat, impresionează prin tonul său proaspăt dulceag cu miros licoros de fagure de miere sau agave, gustul remanent fiind dulceag asemănător nucilor caramelizate cu tonuri de scorțișoară, vanilie, zahăr brun, unt și alune coapte.",
+      "picture": "/shop/13.jpeg",
+      "stock": 20,
+      "price": 340
+    },
+    {
+      "id": 14,
+      "type": 2,
+      "name": "Costa Rica Tarrazu",
+      "content": "O cafea despre care specialiștii spun “atât de echilibrată și prea moderată”. Cafeaua din Costa Rica este greu negociată de către micii comercianți din cauza fermelor foarte mari care creează propriile branduri dar, odată ajunsă în ceșca dumneavostră, vă veți bucura de o cafea “curată”, medie, ușor acidă. Mai este supranumită “cafeaua cu gust de cafea”.  Retrogustul este dulceag ușor acid, aproape efervescent cu o notă de caramel.",
+      "picture": "/shop/14.jpeg",
+      "stock": 20,
+      "price": 340
+    },
+    {
+      "id": 15,
+      "type": 2,
+      "name": "Ethiopia Yirgachefe",
+      "content": "Un campion al Etiopiei, din cea mai celebră zonă pentru calitatea supremă, Sidamo, Yirga Cheffe este una din perlele plantațiilor de cafea africane. Această selecție de boabe mici verzulii, de cafea arabica premium, prăjite după o tradiție de familie, veche de peste 250 ani, de specialistul nostru german, încântă prin tonurile sale profunde de mirodenii, vin și ciocolată cu arome florale.",
+      "picture": "/shop/15.jpeg",
+      "stock": 20,
+      "price": 320
+    },
+    {
+      "id": 16,
+      "type": 2,
+      "name": "Java Purbaya Preanger",
+      "content": "Platoul Ijen, din estul Javei, cu o altitudine de peste 1400 de metri, reunește 5 mari plantatii de peste 4000 ha, Blawan, Jampit, Pancoer, Kayumas și Tugosary, cu soluri vulcanice, bogate în minerale complexe, ce au crescut, pe rând, soiuri de Arabica, apoi Liberica, Robusta și iar Arabica. Asta face sortimentația de Java să aibă caracter și personalitate. Rezultă o cafea ce are gust dulceag și corp bogat, uneori cu tonuri rustice ce durează, fine și catifelate, uneori cu tonuri erbacee și delicate în retrogust.",
+      "picture": "/shop/16.jpeg",
+      "stock": 20,
+      "price": 320
+    },
+    {
+      "id": 17,
+      "type": 2,
+      "name": "Sulawesi Kalossi",
+      "content": "O cafea mătăsoasă cu un corp bogat și un retrogust ce amintește de solul arid cu aciditate scăzută al Indoneziei și note exotice. Această cafea provine din insula Sulawesi, este un soi de cafea pe cale de dispariție din apropierea orașului Kalossi, unde există un sol vulcanic de înaltă altitudine și un climat favorabil pentru recoltarea unei cafele excelente de savurat dimineața privind răsăritul soarelui. Fermierii din Sulawesi prelucrează cafeaua la umed ceea ce îi conferă o calitate superioară sortimentului.",
+      "picture": "/shop/17.jpeg",
+      "stock": 20,
+      "price": 400
+    },
+    {
+      "id": 18,
+      "type": 2,
+      "name": "Tanzania Pearl",
+      "content": "O cafea cu mult caracter din Tanzania care face parte din familia cafelelor procesate la umed din estul Africii. Statul este situat în districtul Karatu, în panta craterului Ngorongoro, format prin prăbușirea pereților unui vulcan care este situat în partea de sud a parcului Serengeti și înconjurat de rezervația Ngila Forest. Aceasta a fost fondată în secolul XX de către o familie din Germania, fiind luată ulterior de fermieri britanici după cel de-al doilea Razboi Mondial, care au vândut-o lui Rudolf Meyer în 1990.",
+      "picture": "/shop/18.jpeg",
+      "stock": 20,
+      "price": 350
+    },
+    {
+      "id": 19,
+      "type": 2,
+      "name": "Zabaione Coffee",
+      "content": "O gură din această delicioasă și cremoasă cafea cu siguranță va încânta chiar și nebăutorii de cafea. Acest amestec de diferite sortimente delicate de cafea arabica, prăjite și aromate cu esență de zabaione, este delicios ca atare sau în combinații cu lapte sau spumă de lapte, cu ciocolată sau frișcă.",
+      "picture": "/shop/19.jpeg",
+      "stock": 20,
+      "price": 320
+    },
+    {
+      "id": 20,
+      "type": 2,
+      "name": "Kopi Luwak",
+      "content": "KOPI LUWAK este considerată cea mai scumpă cafea din lume. În limba indoneziană KOPI înseamnă cafea, iar LUWAK înseamnă zibetă, un mamifer cățărător ce trăiește în insulele arhipelagului și care are în dieta sa și fructul arborelui de cafea. Ingerând cireșe întregi alese „pe sprânceană” pentru o digestie sănătoasă, aceasta eliberează în natură fructele, parțial digerate, ce sunt apoi culese și procesate cu atenție, prin multiple spălări în bazine cu apă de râu. Zvântate la soare și prăjite, după cele mai delicate proceduri, rezultă cea mai scumpă, cea mai fină și sănătoasă cafea din lume. Datorită prețului exorbitant au aparut pe piață și falsuri, nesănătoase, ce au pretenția de original.",
+      "picture": "/shop/20.jpeg",
+      "stock": 10,
+      "price": 2300
+    }
+
+
+
+
+
   ]
 }
