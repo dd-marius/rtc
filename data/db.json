@@ -11,7 +11,7 @@
       "email": "m@rtc.ro",
       "password": "$2a$10$HMttxRVgHH4KM5B1qCt9teR.fEbLYCUZRneaVUW8/QMxQ1puDrhbO",
       "nameFirst": "Marius",
-      "nameLast": "Client",
+      "nameLast": "Client2",
       "id": 2
     },
     {
@@ -98,7 +98,7 @@
       "id": 1,
       "type": 1,
       "name": "A Kiss With Hazelnut",
-      "content": "Ceai negru de mare calitate ASSAM CTC, fulgi și bucățele de boabe de cacao, bucățele de alune caramelizate și carmel. Aromă și gust natural de ceai negru și ciocolată cu alune." ,
+      "content": "Ceai negru de mare calitate ASSAM CTC, fulgi și bucățele de boabe de cacao, bucățele de alune caramelizate și carmel. Aromă și gust natural de ceai negru și ciocolată cu alune.",
       "picture": "/shop/1.jpg",
       "stock": 20,
       "price": 300,
@@ -108,7 +108,7 @@
       "id": 2,
       "type": 1,
       "name": "After Lunch",
-      "content": "roiniță, tulsi, bucăți de măr, peppermint, rădăcină de lemn dulce, mușețel, fenicul, chimen, rozmarin, arome naturale, gălbenele. Gust și aromă de vanilie și anise.",
+      "content": "Roiniță, tulsi, bucăți de măr, peppermint, rădăcină de lemn dulce, mușețel, fenicul, chimen, rozmarin, arome naturale, gălbenele. Gust și aromă de vanilie și anise.",
       "picture": "/shop/2.png",
       "stock": 20,
       "price": 310,

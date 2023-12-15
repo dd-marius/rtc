@@ -1,15 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
-import { uxShowCategoryName } from '@/lib/uxShop';
+import { uxShowCategoryName, uxTrimStringToMaxLength } from '@/lib/uxShop';
 
 export function ShopItem({ item }) {
-  function uxTrimStringToMaxLength(str, maxLength=200) {
-    // Used for failover, we are now handling this via CSS if supported in (modern) browsers
-    if (str.length > maxLength) {
-        return str.substring(0, maxLength - 3) + '...';
-    }
-    return str;
-  }
 
   return (
     <article className="border rounded-lg overflow-hidden relative">

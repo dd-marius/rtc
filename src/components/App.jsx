@@ -10,6 +10,7 @@ import { NotFound } from '@/features/NotFound/NotFound';
 import { AuthRegister } from '@/features/Auth/AuthRegister';
 import { AuthLogin } from '@/features/Auth/AuthLogin';
 import { AuthContextProvider } from '@/features/Auth/AuthContext';
+import { CartContextProvider } from "@/features/Cart/CartContext";
 import { RequireAuth } from '@/features/Auth/RequireAuth';
 import { Profile } from "@/features/Profile/Profile";
 import { ProfileAddress } from "@/features/Profile/ProfileAddress";
@@ -25,6 +26,7 @@ function App() {
   return (
     <div className="flex flex-col min-h-screen">
       <AuthContextProvider>
+      <CartContextProvider>
         <BrowserRouter> 
           <Header />
           <main className="flex-grow">
@@ -33,11 +35,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="shop" element={<Shop />} />
               <Route path="shop/:id" element={<ShopDetails />} />
-              <Route path="cart" element={
-                <RequireAuth>
-                  <Cart />
-                </RequireAuth>
-              } />
+              <Route path="cart" element={<Cart /> } />
               <Route path="profile" element={
                 <RequireAuth>
                   <ProfileAddress />
@@ -52,6 +50,7 @@ function App() {
           <Footer />
           <ToastContainer />
         </BrowserRouter>
+      </CartContextProvider>
       </AuthContextProvider>
     </div>
   );

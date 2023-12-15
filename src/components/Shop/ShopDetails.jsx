@@ -1,17 +1,18 @@
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useShopApi } from "./useShopApi";
-import { useAuthContext } from '@/features/Auth/AuthContext';
 import { uxShowCategoryName, uxShowPriceMin } from '@/lib/uxShop';
 import { useEffect, useState } from 'react';
+import { useCartContext } from '@/features/Cart/CartContext';
 
 
 export function ShopDetails() {
+  const { cart, fUpdateCart } = useCartContext();
   const [ cartQuantity, setCartQuantity] = useState(1);
   const [ cartPackageType, setCartPackageType] = useState(0);
   const [ cartTotalValue, setCartTotalValue] = useState(0);
   const { id } = useParams();
   const { data: item } = useShopApi(id);
-  const { user } = useAuthContext();
 
   useEffect(() => {
     if (item?.price != null) {
@@ -51,14 +52,26 @@ export function ShopDetails() {
     e.preventDefault();
 
     const cartOrder = {
-      userID: user.id,
-      cartItemId: Number(id),
+      name: item.name,
+      stock: item.stock,
+      price: item.price,
+      picture: item.picture,
+      shopId: id,
       cartQuantity,
       cartPackageType: Number(cartPackageType),
-      cartTotalValue
+      cartPrice: cartTotalValue
+    };
+    
+    if ( cart.some(item => item.shopId === id) )
+    {
+      toast.error("Produsul exista deja in cosul dvs.");
+      return;
     }
     
-    console.log("AddToCart: ", cartOrder);
+    cart.push(cartOrder);
+    fUpdateCart(cart);
+    toast.success("Produsul a fost adaugat in cosul dvs.");
+    // console.log("AddToCart: ", cartOrder);
   }
 
   function renderDisplayPrice(price) {
@@ -84,7 +97,6 @@ export function ShopDetails() {
 
   return (
     <>
-    {/* <Link to="/shop">Back</Link> */}
     <div className="container mx-auto p-4 max-w-[700px] w-full">
     <div className="grid md:grid-cols-2 gap-4">
       <div className="mb-4 md:mb-0">
