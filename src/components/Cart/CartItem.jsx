@@ -11,7 +11,7 @@ export function CartItem({ item, onQuantityChange, onRemove }) {
         </Link>
       </td>
       <td>{item.name}</td>
-      <td>{item.cartPackageType}</td>
+      <td>{item.cartPackageType} g</td>
       <td className="flex items-center justify-center">
         <button onClick={() => onQuantityChange(item.shopId, item.cartQuantity - 1)} disabled={item.cartQuantity <= 1} className="bg-gray-200 text-gray-600 hover:text-gray-700 px-2 py-1">
           -

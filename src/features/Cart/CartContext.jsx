@@ -1,8 +1,7 @@
 import { createContext, useCallback, useContext, useMemo } from 'react';
 import { useLocalStorageState } from '@/hooks/useLocalStorageState';
 
-const initialCart = [
-]
+const initialCart = []
 
 const CartContext = createContext(null);
 
@@ -18,6 +17,7 @@ export function CartContextProvider({ children }) {
   );
 
   const fResetCart = useCallback(() => {
+    console.log("here");
     setCart(initialCart);
   }, [setCart]);
 

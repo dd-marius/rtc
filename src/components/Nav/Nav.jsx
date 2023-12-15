@@ -20,14 +20,13 @@ export function Nav() {
           to="shop">Magazin
         </NavLink>
         </li>
-        {user && (
+
         <li className="mr-4 hover:bg-blue-100">
         <NavLink 
           className={({ isActive }) => `text-gray-600 hover:text-blue-500 block py-2 px-2 ${isActive ? 'bg-blue-200' : ''}`} 
           to="cart">Cos de cumparaturi
         </NavLink>
         </li>
-        )}
       </div>
       <div className="flex">
       {user === null && (  

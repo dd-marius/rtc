@@ -91,6 +91,15 @@
       "phoneNo": "1231231231",
       "userId": 2,
       "id": 4
+    },
+    {
+      "tag": "Home",
+      "address": "Bvd. Independentei Nr.1",
+      "city": "Iasi",
+      "county": "IS",
+      "phoneNo": "0722 222 222",
+      "userId": 4,
+      "id": 5
     }
   ],
   "shop": [
