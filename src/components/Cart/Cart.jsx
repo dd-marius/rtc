@@ -106,6 +106,7 @@ export function Cart() {
                 <th className="text-left"></th>
                 <th className="text-left">Produs</th>
                 <th className="text-left">Gramaj</th>
+                <th className="text-left">Pret</th>
                 <th className="text-center">Cantitate</th>
                 <th className="text-left">Sub-total</th>
                 <th className="text-left"></th>
