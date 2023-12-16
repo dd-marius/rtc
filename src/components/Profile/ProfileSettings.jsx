@@ -41,7 +41,7 @@ const schemaProfile = z.object({
 });
  
 
-export function Profile() {
+export function ProfileSettings() {
     const { user, accessToken, login } = useAuthContext();
     const { patch } = useApi('users');
 
@@ -87,7 +87,7 @@ export function Profile() {
     }
 
     return (
-    <div className="flex flex-col items-center h-screen">
+    <div className="flex flex-col items-center">
         <h1 className="mt-4 text-2xl font-bold mb-4">Profil utilizator:</h1>
 
         <div className="w-full md:w-1/2 h-auto bg-white p-4 shadow-lg">

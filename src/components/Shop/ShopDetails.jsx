@@ -1,18 +1,22 @@
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useShopApi } from "./useShopApi";
 import { uxShowCategoryName, uxShowPriceMin } from '@/lib/uxShop';
 import { useEffect, useState } from 'react';
+import { useAuthContext } from '@/features/Auth/AuthContext';
 import { useCartContext } from '@/features/Cart/CartContext';
-
+import { NotFound } from '@/features/NotFound/NotFound';
 
 export function ShopDetails() {
+  const { user } = useAuthContext();
   const { cart, fUpdateCart } = useCartContext();
   const [ cartQuantity, setCartQuantity] = useState(1);
   const [ cartPackageType, setCartPackageType] = useState(0);
   const [ cartTotalValue, setCartTotalValue] = useState(0);
   const { id } = useParams();
   const { data: item } = useShopApi(id);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (item?.price != null) {
@@ -23,6 +27,8 @@ export function ShopDetails() {
 
   if (!item) {
     return <strong>Loading ...</strong>;
+  } else if (item.length === 0) {
+    return <NotFound />;
   }
 
   function handleQuantityClick(value) {
@@ -95,12 +101,28 @@ export function ShopDetails() {
     }
   }
 
+  const handleEditProduct = () => {
+    navigate(`/shop/edit/${id}`);
+  }
+
   return (
     <>
     <div className="container mx-auto p-4 max-w-[700px] w-full">
     <div className="grid md:grid-cols-2 gap-4">
-      <div className="mb-4 md:mb-0">
-          <img src={item.picture} alt={`Picture for ${item.name}`} className="max-w-[300px] w-full h-auto object-cover rounded-lg" />
+      <div class="mb-4 md:mb-0 space-y-2">
+        <div className="mb-4 md:mb-0 flex flex-col items-center space-y-2">
+            <img src={item.picture} alt={`Picture for ${item.name}`} className="max-w-[300px] w-full h-auto object-cover rounded-lg" />
+        </div>
+        { user && user.role == 1 && (
+        <div class="flex justify-center space-x-2">
+          <button onClick={handleEditProduct} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Editeaza produs
+          </button>
+          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            Sterge produs
+          </button>       
+        </div>
+        )}
       </div>
       <div>
           <h1 className="text-2xl font-bold mb-2">{item.name}</h1>
@@ -121,7 +143,7 @@ export function ShopDetails() {
                     <label htmlFor="gramaj" className="mr-2">Gramaj:</label>
                 </div>
                 <div className="md:col-span-2">
-                    <select value={cartPackageType} onChange={handleSelectChangePackageType} className="border border-gray-300 rounded-md p-2 w-full">
+                    <select id="gramaj" value={cartPackageType} onChange={handleSelectChangePackageType} className="border border-gray-300 rounded-md p-2 w-full">
                         <option value="0" >Alege o optiune</option>
                         <option value="100" className="attached enabled">100g</option>
                         <option value="200" className="attached enabled">200g</option>
@@ -129,11 +151,11 @@ export function ShopDetails() {
                 </div>
 
                 <div className="md:col-span-1 flex md:justify-end items-center">
-                    <label className="mr-2">Cantitate:</label>
+                    <label htmlFor="cantitate" className="mr-2">Cantitate:</label>
                 </div>
                 <div className="md:col-span-2 flex items-center">
                     <button type="button" onClick={() => handleQuantityClick(-1)} className="px-3 border bg-red-500 text-white">-</button>
-                    <input type="text" onChange={(e) => handleQuantityChange(e)} className="w-12 text-center border-t border-b" value={cartQuantity} />
+                    <input id="cantitate" type="text" onChange={(e) => handleQuantityChange(e)} className="w-12 text-center border-t border-b" value={cartQuantity} />
                     <button type="button" onClick={() => handleQuantityClick(1)} className="px-3 border bg-green-500 text-white">+</button>
                 </div>
                 {renderDisplayPrice(cartTotalValue)}

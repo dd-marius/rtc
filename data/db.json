@@ -5,51 +5,40 @@
       "email": "admin@rtc.ro",
       "password": "$2a$10$pVXhgNqe2HEQom8rBiNwq.2OYT69CEIZP9sgGBPcfENHIBNHPpT32",
       "nameFirst": "Admin",
-      "nameLast": "Admin"
+      "nameLast": "Admin",
+      "role": 1
     },
     {
       "email": "m@rtc.ro",
       "password": "$2a$10$HMttxRVgHH4KM5B1qCt9teR.fEbLYCUZRneaVUW8/QMxQ1puDrhbO",
       "nameFirst": "Marius",
       "nameLast": "Client2",
-      "id": 2
+      "id": 2,
+      "role": 2
     },
     {
       "email": "client@rtc.ro",
       "password": "$2a$10$u5aynApskAl47AZ2fBRg5eX278qBJZGU5mfDlMVtkJysWSU1GXUZq",
       "nameFirst": "Client",
       "nameLast": "Client",
-      "id": 3
+      "id": 3,
+      "role": 2
     },
     {
       "email": "test@rtc.ro",
       "password": "$2a$10$22zVmQPw4x3PDXGlcCTmc.tk2Y8DDsqvwfNsHXZ608Emp3e..B4Fe",
       "nameFirst": "Test",
       "nameLast": "User",
-      "id": 4
+      "id": 4,
+      "role": 2
     }
   ],
   "userCart": [
     {
       "id": 1,
       "userId": 2,
-      "shopId": 2,
-      "cartQuantity": 1,
-      "cartPackageType": 100
-    },
-    {
-      "id": 2,
-      "userId": 2,
-      "shopId": 5,
-      "cartQuantity": 2,
-      "cartPackageType": 100
-    },
-    {
-      "id": 3,
-      "userId": 2,
-      "shopId": 11,
-      "cartQuantity": 1,
-      "cartPackageType": 200
+      "cartOrderTimestamp": 0,
+      "cartItems": []
     }
   ],
   "userAddress": [

@@ -11,7 +11,7 @@ export function useShopApi(id, shouldRequestOnLoad = true) {
     async function getData() {
       let data = await get(null, id);
       // Handle case when there is no data
-      if (Object.keys(data).length === 0)
+      if (data && Object.keys(data).length === 0)
       { 
         data = []
       }

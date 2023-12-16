@@ -1,7 +1,7 @@
 
 export function Footer() {
   return (
-    <footer className="bg-gray-800 text-white py-2">
+    <footer className="bg-gray-800 text-white py-2 mt-4">
       <div className="flex justify-center items-center">
         <img src="/logo-scoala-it.png" alt="Școala informală de IT" className="mx-auto h-8 mr-3" />
         <p className="text-sm">

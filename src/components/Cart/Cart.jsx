@@ -152,10 +152,10 @@ export function Cart() {
           <div className="mb-4">
             <h3 className="text-lg font-semibold mb-2">Alege o adresa pentru livrare:</h3>
             { userAddresses && userAddresses.map((address) => (
-              <label key={address.id} className="block mb-2">
+              <label htmlFor={`address_${address.id}`} key={address.id} className="block mb-2">
                 <input
+                  id={`address_${address.id}`}
                   type="radio"
-                  name="address"
                   checked={selectedAddress === address.id}
                   onChange={() => handleAddressChange(address.id)}
                   className="mr-2"

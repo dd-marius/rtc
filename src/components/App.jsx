@@ -12,10 +12,10 @@ import { AuthLogin } from '@/features/Auth/AuthLogin';
 import { AuthContextProvider } from '@/features/Auth/AuthContext';
 import { CartContextProvider } from "@/features/Cart/CartContext";
 import { RequireAuth } from '@/features/Auth/RequireAuth';
-import { Profile } from "@/features/Profile/Profile";
-import { ProfileAddress } from "@/features/Profile/ProfileAddress";
+import { Profile } from "@/components/Profile/Profile";
 import { Shop } from '@/components/Shop/Shop';
 import { ShopDetails } from "@/components/Shop/ShopDetails";
+import { ShopItemEdit } from "@/components/Shop/ShopItemEdit";
 import { Cart } from "@/components/Cart/Cart";
 import { Footer } from "@/components/Footer/Footer";
 import { Header } from "@/components/Header/Header";
@@ -34,11 +34,15 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="shop" element={<Shop />} />
+              <Route path="shop/edit/:id?" element={
+                <RequireAuth>
+                  <ShopItemEdit />
+                </RequireAuth>
+              } />
               <Route path="shop/:id" element={<ShopDetails />} />
               <Route path="cart" element={<Cart /> } />
               <Route path="profile" element={
                 <RequireAuth>
-                  <ProfileAddress />
                   <Profile />
                 </RequireAuth>
               } />
