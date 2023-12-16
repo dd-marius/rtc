@@ -8,7 +8,7 @@ npm i -D json-server-auth json-server
 npm -i react-router-dom
 npm i react-hook-form @hookform/resolvers
 
-npm i zod
+npm i zod yup
 
 npx shadcn-ui@latest add form
 npx shadcn-ui@latest add input

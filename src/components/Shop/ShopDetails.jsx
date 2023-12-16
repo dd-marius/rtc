@@ -109,16 +109,16 @@ export function ShopDetails() {
     <>
     <div className="container mx-auto p-4 max-w-[700px] w-full">
     <div className="grid md:grid-cols-2 gap-4">
-      <div class="mb-4 md:mb-0 space-y-2">
+      <div className="mb-4 md:mb-0 space-y-2">
         <div className="mb-4 md:mb-0 flex flex-col items-center space-y-2">
             <img src={item.picture} alt={`Picture for ${item.name}`} className="max-w-[300px] w-full h-auto object-cover rounded-lg" />
         </div>
         { user && user.role == 1 && (
-        <div class="flex justify-center space-x-2">
-          <button onClick={handleEditProduct} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <div className="flex justify-center space-x-2">
+          <button onClick={handleEditProduct} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Editeaza produs
           </button>
-          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
             Sterge produs
           </button>       
         </div>

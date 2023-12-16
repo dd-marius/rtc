@@ -3,7 +3,7 @@ import { useApi } from '@/hooks/useApi';
 import { useAuthContext } from '@/features/Auth/AuthContext';
 
 export function useShopApi(id, shouldRequestOnLoad = true) {
-  const [data, setData] = useState(null);
+  const [ data, setData ] = useState(null);
   const { accessToken } = useAuthContext();
   const { get } = useApi('shop');
 

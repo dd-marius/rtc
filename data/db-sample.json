@@ -291,46 +291,6 @@
       "stock": 10,
       "price": 2300,
       "promoted": 1
-    },
-    {
-      "picture": "/shop/2.png",
-      "type": 1,
-      "promoted": false,
-      "price": 222,
-      "stock": 222,
-      "content": "aaaaaaaaaaaaaaaaaaa3333333333",
-      "name": "After Lunch 2",
-      "id": 21
-    },
-    {
-      "picture": "/shop/11.jpeg",
-      "type": 2,
-      "promoted": false,
-      "price": 11,
-      "stock": 11,
-      "content": "Amaretto Coffee 2Amaretto Coffee 2Amaretto Coffee 2Amaretto Coffee 2",
-      "name": "Amaretto Coffee 2",
-      "id": 22
-    },
-    {
-      "picture": "/shop/2.png",
-      "type": 1,
-      "promoted": false,
-      "price": 11,
-      "stock": 11,
-      "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "name": "A Kiss With Hazelnut2222",
-      "id": 23
-    },
-    {
-      "picture": "/shop/11.jpeg",
-      "type": 2,
-      "promoted": true,
-      "price": 11,
-      "stock": 11,
-      "content": "11111111111111111111111111111111",
-      "name": "Amaretto Coffee 2222",
-      "id": 24
     }
   ]
 }
