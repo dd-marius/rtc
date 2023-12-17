@@ -8,6 +8,7 @@ import * as y from "yup"
 
 import { useAuthContext } from '@/features/Auth/AuthContext';
 import { useApi } from '@/hooks/useApi';
+import { DialogConfirm } from "@/components/DialogConfirm/DialogConfirm";
 
 const categories = [
   { id: 1, name: 'Ceai' },
@@ -98,7 +99,7 @@ export function ShopItemEdit() {
     }  
   }, [picture]);
 
-  async function onSubmit(values) {
+  const onSubmit = async (values) => {
     // Trivial role control to only allow "admins" to make modifications
     if ( user.role != 1 ) {
       toast.error("Nivelul de acces al utilizatorului dvs. nu va permite sa faceti modificari.");
@@ -128,6 +129,28 @@ export function ShopItemEdit() {
     }
   }
 
+  const handleActionDelete = async () => {
+    // Trivial role control to only allow "admins" to make modifications
+    if ( user.role != 1 ) {
+      toast.error("Nivelul de acces al utilizatorului dvs. nu va permite sa faceti modificari.");
+      return;
+    }    
+    // WARNING: Because json-server has no built-in protection for routes you can modify data for other users! DO NOT USE THIS IN PRODUCTION!
+    const idDelete = Number(id);
+
+    // Check if we have a valid ID
+    if (!isNaN(idDelete) && idDelete > 0) {
+      const data = await remove(idDelete, { accessToken });
+      if (data != null) {
+        toast.success("Produsul a fost sters!");
+      } else {
+        toast.error("A aparut o eroare la stergerea produsului!");
+      }
+      navigate('/shop');
+    } else {
+      toast.error("A aparut o eroare!");
+    }
+  }
 
   return (
     <div className="flex flex-col items-center">
@@ -236,6 +259,17 @@ export function ShopItemEdit() {
             {id && (`Salveaza modificarile`)}
             {!id && (`Adauga produs`)}
           </button>
+          { id && (
+          <DialogConfirm 
+            onAction={handleActionDelete} 
+            customTitle="Confirmare"
+            customDescription="Sunteti sigur ca doriti sa stergeti produsul?">
+            <button 
+              type="button" 
+              className="ml-4 mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">
+                Sterge produs</button>
+          </DialogConfirm>
+          )}          
         </div>
       </form>
       </div>

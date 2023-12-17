@@ -1,15 +1,19 @@
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+
+import { useApi } from '@/hooks/useApi';
 import { useShopApi } from "./useShopApi";
 import { uxShowCategoryName, uxShowPriceMin } from '@/lib/uxShop';
-import { useEffect, useState } from 'react';
 import { useAuthContext } from '@/features/Auth/AuthContext';
 import { useCartContext } from '@/features/Cart/CartContext';
 import { NotFound } from '@/features/NotFound/NotFound';
+import { DialogConfirm } from "@/components/DialogConfirm/DialogConfirm";
 
 export function ShopDetails() {
-  const { user } = useAuthContext();
+  const { user, accessToken } = useAuthContext();
+  const { remove } = useApi('shop');
   const { cart, fUpdateCart } = useCartContext();
   const [ cartQuantity, setCartQuantity] = useState(1);
   const [ cartPackageType, setCartPackageType] = useState(0);
@@ -100,9 +104,33 @@ export function ShopDetails() {
       )
     }
   }
+  // TODO: Refactor and test functions above to arrow functions
 
   const handleEditProduct = () => {
     navigate(`/shop/edit/${id}`);
+  }
+
+  const handleActionDelete = async () => {
+    // Trivial role control to only allow "admins" to make modifications
+    if ( user.role != 1 ) {
+      toast.error("Nivelul de acces al utilizatorului dvs. nu va permite sa faceti modificari.");
+      return;
+    }
+    // WARNING: Because json-server has no built-in protection for routes you can modify data for other users! DO NOT USE THIS IN PRODUCTION!
+    const idDelete = Number(id);
+
+    // Check if we have a valid ID
+    if (!isNaN(idDelete) && idDelete > 0) {
+      const data = await remove(idDelete, { accessToken });
+      if (data != null) {
+        toast.success("Produsul a fost sters!");
+      } else {
+        toast.error("A aparut o eroare la stergerea produsului!");
+      }
+      navigate('/shop');
+    } else {
+      toast.error("A aparut o eroare!");
+    }
   }
 
   return (
@@ -118,9 +146,15 @@ export function ShopDetails() {
           <button onClick={handleEditProduct} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Editeaza produs
           </button>
-          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-            Sterge produs
-          </button>       
+          <DialogConfirm 
+            onAction={handleActionDelete} 
+            customTitle="Confirmare"
+            customDescription="Sunteti sigur ca doriti sa stergeti produsul?">
+            <button 
+              type="button" 
+              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                Sterge produs</button>
+          </DialogConfirm>
         </div>
         )}
       </div>
