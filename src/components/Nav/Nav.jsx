@@ -3,9 +3,10 @@ import { FaShoppingCart } from 'react-icons/fa';
 import { NavLink } from "react-router-dom";
 import { useAuthContext } from '@/features/Auth/AuthContext';
 import { useCartContext } from '@/features/Cart/CartContext';
+import { UserMenu } from '@/components/UserMenu/UserMenu';
 
 export function Nav() {
-  const { user, logout } = useAuthContext();
+  const { user } = useAuthContext();
   const { cartNoItems } = useCartContext();
 
   return(
@@ -57,28 +58,7 @@ export function Nav() {
         </>              
       )}
       {user && (
-        <>
-        <li>
-          <p className="block py-2">Utilizator:</p>
-        </li>
-        <li className="ml-4 hover:bg-blue-100">
-          <NavLink 
-            className={({ isActive }) => `text-gray-600 hover:text-blue-500 block py-2 px-2 ${isActive ? 'bg-blue-200' : ''}`} 
-            to="profile">{user.nameFirst}
-          </NavLink>
-        </li>
-        <li className="ml-4 hover:bg-blue-100">
-            <a className="text-gray-600 hover:text-blue-500 block py-2 px-2"
-            href="#"
-            onClick={(e) => {
-                e.preventDefault();
-                logout();
-            }}
-            >
-            Delogare
-            </a>
-        </li>
-        </>
+        <UserMenu />
       )}
       </div>
     </menu>
