@@ -82,7 +82,7 @@ export function AuthRegister() {
 
 
     return (
-      <div className="flex flex-col items-center h-screen">
+      <div className="flex flex-col items-center">
         <h1 className="text-2xl font-bold mb-4">Inregistrare</h1>
         <div className="w-full md:w-1/2 h-auto bg-white p-4 shadow-lg">
         <Form {...form}>

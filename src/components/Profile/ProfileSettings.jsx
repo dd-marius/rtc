@@ -42,6 +42,7 @@ const schemaProfile = z.object({
  
 
 export function ProfileSettings() {
+    //TODO: Refactor this to use yup & basic form because shadcn is to complex to contol
     const { user, accessToken, login } = useAuthContext();
     const { patch } = useApi('users');
 

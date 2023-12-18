@@ -22,8 +22,8 @@ export function UserMenu() {
   }, [dropdownRef]);
 
   return (
-    <div className="relative ml-4 hover:bg-blue-100 pr-2 z-50">
-      <button onClick={toggleDropdown} className="block py-2">
+    <div className="relative ml-2 hover:bg-blue-100 pr-1 z-50">
+      <button onClick={toggleDropdown} className="block py-2 text-sm sm:text-base">
         Utilizator: {user.nameFirst}
       </button>
 
@@ -35,20 +35,20 @@ export function UserMenu() {
 
           <NavLink 
             to="/profile" 
-            className={({ isActive }) => `block px-4 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 ${isActive ? 'bg-blue-200' : ''}`}>
+            className={({ isActive }) => `block px-4 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 text-sm sm:text-base ${isActive ? 'bg-blue-200' : ''}`}>
             Profil utilizator
           </NavLink>
           <hr className="my-2 border-gray-200" />
         {user.role == 1 && (
           <NavLink 
             to="/shop/edit" 
-            className={({ isActive }) => `block px-4 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 ${isActive ? 'bg-blue-200' : ''}`}>
+            className={({ isActive }) => `block px-4 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 text-sm sm:text-base ${isActive ? 'bg-blue-200' : ''}`}>
             Adauga produs nou
           </NavLink>
         )}
           <NavLink 
             to="/order" 
-            className={({ isActive }) => `block px-4 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 ${isActive ? 'bg-blue-200' : ''}`}>
+            className={({ isActive }) => `block px-4 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 text-sm sm:text-base ${isActive ? 'bg-blue-200' : ''}`}>
             {user.role == 1 
             ? (<>Administrare comenzi</>)
             : (<>Comenzile mele</>)
@@ -61,7 +61,7 @@ export function UserMenu() {
               logout();
               hideDropdown();
             }}
-            className="block px-4 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 w-full text-left"
+            className="block px-4 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 w-full text-left text-sm sm:text-base"
           >
             Delogare
           </button>

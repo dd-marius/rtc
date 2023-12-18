@@ -27,6 +27,8 @@ import { useApi } from '@/hooks/useApi';
 import { DialogConfirm } from "@/components/DialogConfirm/DialogConfirm";
 
 
+const phoneNumberRegex = /^(\d{4})([- ])?(\d{3})([- ])?(\d{3})$/;
+
 const schemaProfile = z.object({
     tag: z.string().min(3, {
         message: "Prescurtarea trebuie sa aiba minim 3 caractere.",
@@ -38,12 +40,11 @@ const schemaProfile = z.object({
         message: "Numele orasului trebuie sa aiba minim 3 caractere.",
     }),
     county: z.string().min(2, {
-        message: "Numele judetului trebuie sa aiba minim 3 caractere.",
+        message: "Numele judetului trebuie sa aiba minim 2 caractere.",
     }),
-    phoneNo: z.string().min(10, {
-        message: "Numarul de telefon trebuie sa aiba minim 10 caractere.",
-    }),  
-
+    phoneNo: z.string().refine((value) => phoneNumberRegex.test(value), {
+      message: "Format incorect pentru numarul de telefon. Exemplu: xxxx-xxx-xxx",
+    }),
   });
 
 
@@ -54,6 +55,7 @@ const defaultDomState = {
 }
 
 export function ProfileAddress() {
+    //TODO: Refactor this to use yup & basic form because shadcn is to complex to contol
     const [ dataAddresses, setDataAddresses] = useState(null);
     const [ selectKey, setSelectKey] = useState(0);
     const [ domState, setDomState] = useState(defaultDomState);
@@ -140,7 +142,7 @@ export function ProfileAddress() {
 
     function handleHideForm() {
         clearForm();
-        setDomState({ isVisible: false});
+        setDomState({ isVisible: false, buttonText: "Modifica", keySelected: 0});
         setSelectKey(prevKey => prevKey + 1);
     }
 
@@ -157,7 +159,7 @@ export function ProfileAddress() {
     <div className="flex flex-col items-center">
         <h1 className="text-2xl font-bold mb-4">Adrese pentru livrare:</h1>
 
-        <div className="flex items-center space-x-4 w-full md:w-1/2 h-auto bg-white p-4 shadow-lg">
+        <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 w-full md:w-1/2 h-auto bg-white p-4 shadow-lg">
             { dataAddresses && dataAddresses?.length !== 0 && (
             <Select onValueChange={handleSelectValueChange} key={selectKey}>
             <SelectTrigger className="w-full">
@@ -171,9 +173,10 @@ export function ProfileAddress() {
             </SelectContent>
             </Select>
             )}
-            <Button onClick={handleButtonAdd}>Adauga adresa noua</Button>
-            <div className="flex-grow"></div>
-            <Button disabled={ ! domState.isVisible } onClick={handleHideForm}>Ascunde</Button>
+            <div className="flex w-full justify-between">
+                <Button onClick={handleButtonAdd}>Adauga adresa noua</Button>
+                <Button disabled={ ! domState.isVisible } onClick={handleHideForm}>Ascunde</Button>
+            </div>
         </div>
         
         { domState.isVisible && (

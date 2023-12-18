@@ -1,6 +1,6 @@
 import { FaShoppingCart } from 'react-icons/fa';
-
 import { NavLink } from "react-router-dom";
+
 import { useAuthContext } from '@/features/Auth/AuthContext';
 import { useCartContext } from '@/features/Cart/CartContext';
 import { UserMenu } from '@/components/UserMenu/UserMenu';
@@ -11,24 +11,24 @@ export function Nav() {
 
   return(
     <nav>
-    <menu className="flex justify-between items-stretch bg-gray-100">
-      <div className="flex">
-        <li className="mr-4 hover:bg-blue-100">
+    <menu className="flex flex-col sm:flex-row justify-between items-stretch bg-gray-100">
+      <div className="flex flex-col sm:flex-row">
+        <li className="hover:bg-blue-100">
         <NavLink 
-          className={({ isActive }) => `text-gray-600 hover:text-blue-500 block py-2 px-2 ${isActive ? 'bg-blue-200' : ''}`} 
+          className={({ isActive }) => `text-sm sm:text-base text-gray-600 hover:text-blue-500 block py-2 px-2 ${isActive ? 'bg-blue-200' : ''}`} 
           to="/">Home
         </NavLink>
         </li>
-        <li className="mr-4 hover:bg-blue-100">
+        <li className="hover:bg-blue-100">
         <NavLink 
-          className={({ isActive }) => `text-gray-600 hover:text-blue-500 block py-2 px-2 ${isActive ? 'bg-blue-200' : ''}`} 
+          className={({ isActive }) => `text-sm sm:text-base text-gray-600 hover:text-blue-500 block py-2 px-2 ${isActive ? 'bg-blue-200' : ''}`} 
           to="shop">Magazin
         </NavLink>
         </li>
 
-        <li className="mr-4 hover:bg-blue-100">
+        <li className="hover:bg-blue-100">
         <NavLink 
-          className={({ isActive }) => `flex items-center text-gray-600 hover:text-blue-500 py-2 px-2 ${isActive ? 'bg-blue-200' : ''}`} 
+          className={({ isActive }) => `text-sm sm:text-base flex items-center text-gray-600 hover:text-blue-500 py-2 px-2 ${isActive ? 'bg-blue-200' : ''}`} 
           to="cart">
           <FaShoppingCart className="mr-2" /> 
             Cos
@@ -40,18 +40,18 @@ export function Nav() {
         </NavLink>
         </li>
       </div>
-      <div className="flex">
+      <div className="flex flex-col sm:flex-row">
       {user === null && (  
         <>
-        <li className="ml-4 hover:bg-blue-100">
+        <li className="hover:bg-blue-100">
           <NavLink 
-            className={({ isActive }) => `text-gray-600 hover:text-blue-500 block py-2 px-2 ${isActive ? 'bg-blue-200' : ''}`} 
+            className={({ isActive }) => `text-sm sm:text-base text-gray-600 hover:text-blue-500 block py-2 px-2 ${isActive ? 'bg-blue-200' : ''}`} 
             to="login">Autentificare
           </NavLink>
         </li>
-        <li className="ml-4 hover:bg-blue-100">
+        <li className="hover:bg-blue-100">
           <NavLink 
-            className={({ isActive }) => `text-gray-600 hover:text-blue-500 block py-2 px-2 ${isActive ? 'bg-blue-200' : ''}`} 
+            className={({ isActive }) => `text-sm sm:text-base text-gray-600 hover:text-blue-500 block py-2 px-2 ${isActive ? 'bg-blue-200' : ''}`} 
             to="register">Inregistrare
           </NavLink>
         </li>
