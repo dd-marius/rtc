@@ -16,6 +16,7 @@ export function Cart() {
   const navigate = useNavigate();
   const { user, accessToken } = useAuthContext();
   const { get } = useApi('userAddress');
+  const { post: postOrder } = useApi('userCart');
   const [ userAddresses, setUserAddresses] = useState(null);
   const { cart, fUpdateCart, fResetCart } = useCartContext();
   const [ cartSubTotal, setCartSubTotal ] = useState(0);
@@ -76,8 +77,32 @@ export function Cart() {
     return total;
   }
 
-  function handlePlaceOrder() {
+  
+  async function handlePlaceOrder() {
     console.log("Place order");
+    // Extract the address from "DB" to store in order (avoid address changing after order has been placed)
+    const address = userAddresses.find(address => address.id === selectedAddress);
+    // Build order object
+    const orderObject = {
+      userId: user.id,
+      orderTimestamp: Date.now(),
+      orderShippingAddress: address ? [address] : [],
+      orderShippingFee: costLivrare,
+      orderProductsTotalPrice: cartSubTotal,
+      orderTotalBilledPrice: cartSubTotal + costLivrare,      
+      orderStatus: 0,
+      cartItems: cart      
+    }
+
+    // TODO: Refresh and check stock before placing orders to make sure there's enough items in stock
+    const data = await postOrder(orderObject, { accessToken });
+    if (data != null) {
+      toast.success("Comanda a fost plasata cu succes. Va multumim!");
+      fResetCart();
+      navigate(`/`);
+    } else {
+      toast.error("A aparut o eroare la plasarea comenzii!");
+    }
   }
 
   if ( cart?.length === 0 ) {

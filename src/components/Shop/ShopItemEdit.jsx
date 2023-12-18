@@ -125,7 +125,6 @@ export function ShopItemEdit() {
       } else {
         toast.error("A aparut o eroare!");
       }
-      console.log(data);
     }
   }
 

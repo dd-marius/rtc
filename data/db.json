@@ -35,10 +35,88 @@
   ],
   "userCart": [
     {
-      "id": 1,
+      "userId": 1,
+      "orderTimestamp": 1702905249926,
+      "orderShippingAddress": [
+        {
+          "userId": 1,
+          "id": 1,
+          "address": "Bvd. Independentei Nr.1",
+          "city": "Iasi",
+          "county": "IS",
+          "phoneNo": "0733 123 123",
+          "tag": "Home"
+        }
+      ],
+      "orderShippingFee": 0,
+      "orderProductsTotalPrice": 114.8,
+      "orderTotalBilledPrice": 114.8,
+      "orderStatus": 0,
+      "cartItems": [
+        {
+          "name": "Anastasia BIO",
+          "stock": 20,
+          "price": 498,
+          "picture": "/shop/4.jpeg",
+          "shopId": "4",
+          "cartQuantity": 1,
+          "cartPackageType": 100,
+          "cartPrice": 49.8
+        },
+        {
+          "name": "Amintiri din copilărie",
+          "stock": 20,
+          "price": 325,
+          "picture": "/shop/3.jpg",
+          "shopId": "3",
+          "cartQuantity": 2,
+          "cartPackageType": 100,
+          "cartPrice": 65
+        }
+      ],
+      "id": 1
+    },
+    {
       "userId": 2,
-      "cartOrderTimestamp": 0,
-      "cartItems": []
+      "orderTimestamp": 1702905393986,
+      "orderShippingAddress": [
+        {
+          "tag": "Test23422",
+          "address": "Testttttttttttttttttttttttttttttttttttttttt",
+          "city": "Iasi",
+          "county": "IS",
+          "phoneNo": "1231231231",
+          "userId": 2,
+          "id": 4
+        }
+      ],
+      "orderShippingFee": 20,
+      "orderProductsTotalPrice": 92,
+      "orderTotalBilledPrice": 112,
+      "orderStatus": 0,
+      "cartItems": [
+        {
+          "name": "A Kiss With Hazelnut",
+          "stock": 20,
+          "price": 300,
+          "picture": "/shop/1.jpg",
+          "shopId": "1",
+          "cartQuantity": 1,
+          "cartPackageType": 100,
+          "cartPrice": 30
+        },
+        {
+          "name": "After Lunch",
+          "stock": 20,
+          "price": 310,
+          "picture": "/shop/2.png",
+          "shopId": "2",
+          "cartQuantity": 2,
+          "cartPackageType": 100,
+          "cartPrice": 62
+        }
+      ],
+      "id": 2
     }
   ],
   "userAddress": [
