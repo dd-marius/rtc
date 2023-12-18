@@ -7,6 +7,7 @@ import { useCartContext } from '@/features/Cart/CartContext';
 import { useApi } from '@/hooks/useApi';
 import { CartItem } from '@/components/Cart/CartItem';
 import { CartEmpty } from '@/components/Cart/CartEmpty';
+import { DialogConfirm } from "@/components/DialogConfirm/DialogConfirm";
 
 // TODO: Move to settings
 const minPriceFreeOrder = 100;
@@ -80,7 +81,7 @@ export function Cart() {
   
   async function handlePlaceOrder() {
     console.log("Place order");
-    // Extract the address from "DB" to store in order (avoid address changing after order has been placed)
+    // Extract the selected address from "DB" to store in order (avoid address changing after order has been placed)
     const address = userAddresses.find(address => address.id === selectedAddress);
     // Build order object
     const orderObject = {
@@ -94,7 +95,8 @@ export function Cart() {
       cartItems: cart      
     }
 
-    // TODO: Refresh and check stock before placing orders to make sure there's enough items in stock
+    // TODO: IMPORTANT! Refresh and check stock before placing orders to make sure there's enough items in stock
+
     const data = await postOrder(orderObject, { accessToken });
     if (data != null) {
       toast.success("Comanda a fost plasata cu succes. Va multumim!");
@@ -150,9 +152,14 @@ export function Cart() {
           </table>
         </div>
         <div className="bg-white flex justify-end">
-          <button onClick={handleCartEmpty} className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 text-sm rounded">
+        <DialogConfirm 
+          onAction={handleCartEmpty} 
+          customTitle="Confirmare"
+          customDescription="Sunteti sigur ca doriti sa goliti cosul de cumparaturi?">
+          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 text-sm rounded">
             Goleste cosul
           </button>
+        </DialogConfirm>
         </div>
         <div className="bg-white p-4 mt-4">
           <h2 className="text-xl font-semibold mb-4">Sumar comanda:</h2>

@@ -19,7 +19,8 @@ import { ShopItemEdit } from "@/components/Shop/ShopItemEdit";
 import { Cart } from "@/components/Cart/Cart";
 import { Footer } from "@/components/Footer/Footer";
 import { Header } from "@/components/Header/Header";
-import { Home } from "@/components//Home/Home";
+import { Home } from "@/components/Home/Home";
+import { Order } from "@/components/Order/Order";
 
 
 function App() {
@@ -44,6 +45,11 @@ function App() {
               <Route path="profile" element={
                 <RequireAuth>
                   <Profile />
+                </RequireAuth>
+              } />
+              <Route path="order" element={
+                <RequireAuth>
+                  <Order />
                 </RequireAuth>
               } />
               <Route path="login" element={<AuthLogin />} />

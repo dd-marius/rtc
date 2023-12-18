@@ -12,7 +12,7 @@
       "email": "m@rtc.ro",
       "password": "$2a$10$HMttxRVgHH4KM5B1qCt9teR.fEbLYCUZRneaVUW8/QMxQ1puDrhbO",
       "nameFirst": "Marius",
-      "nameLast": "Client2",
+      "nameLast": "Client",
       "id": 2,
       "role": 2
     },
@@ -81,11 +81,11 @@
       "orderTimestamp": 1702905393986,
       "orderShippingAddress": [
         {
-          "tag": "Test23422",
-          "address": "Testttttttttttttttttttttttttttttttttttttttt",
+          "tag": "Test",
+          "address": "Bvd. Stefan cel Mare Nr.5",
           "city": "Iasi",
           "county": "IS",
-          "phoneNo": "1231231231",
+          "phoneNo": "0720 255 255",
           "userId": 2,
           "id": 4
         }
@@ -117,6 +117,41 @@
         }
       ],
       "id": 2
+    },
+    {
+      "userId": 2,
+      "orderTimestamp": 1702912889671,
+      "orderShippingAddress": [
+        {
+          "userId": 2,
+          "id": 2,
+          "tag": "Birou",
+          "address": "Str. Libertatii Nr.10 Bl.X2",
+          "city": "Iasi",
+          "county": "IS",
+          "phoneNo": "0720 111 222",
+          "nameLast": "Client3",
+          "email": "m@rtc.ro",
+          "nameFirst": "Marius"
+        }
+      ],
+      "orderShippingFee": 0,
+      "orderProductsTotalPrice": 229.99999999999997,
+      "orderTotalBilledPrice": 229.99999999999997,
+      "orderStatus": 0,
+      "cartItems": [
+        {
+          "name": "Kopi Luwak",
+          "stock": 10,
+          "price": 2300,
+          "picture": "/shop/20.jpeg",
+          "shopId": "20",
+          "cartQuantity": 1,
+          "cartPackageType": 100,
+          "cartPrice": 229.99999999999997
+        }
+      ],
+      "id": 3
     }
   ],
   "userAddress": [
@@ -149,15 +184,6 @@
       "city": "Iasi",
       "county": "IS",
       "phoneNo": "0733 111 222"
-    },
-    {
-      "tag": "Test23422",
-      "address": "Testttttttttttttttttttttttttttttttttttttttt",
-      "city": "Iasi",
-      "county": "IS",
-      "phoneNo": "1231231231",
-      "userId": 2,
-      "id": 4
     },
     {
       "tag": "Home",
