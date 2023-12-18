@@ -105,9 +105,10 @@ export function ShopItemEdit() {
       toast.error("Nivelul de acces al utilizatorului dvs. nu va permite sa faceti modificari.");
       return;
     }
+    // Set this to 1 or 0 to keep consitency with API JSON data format
+    values.promoted = values.promoted ? 1 : 0;
     // If we have a valid id it means we are in "edit mode"
     if (id) {
-      console.log("Modificare");
       const idPatch = item.id;
       const data = await patch(idPatch, values, { accessToken });
       if (data != null) {
@@ -117,7 +118,6 @@ export function ShopItemEdit() {
         toast.error("A aparut o eroare!");
       }
     } else {
-      console.log("Adaugare");
       const data = await post(values, { accessToken });
       if (data != null) {
         toast.success("Produsul a fost adaugat cu succes!");
