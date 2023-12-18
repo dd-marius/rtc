@@ -1,8 +1,12 @@
+import { FaShoppingCart } from 'react-icons/fa';
+
 import { NavLink } from "react-router-dom";
 import { useAuthContext } from '@/features/Auth/AuthContext';
+import { useCartContext } from '@/features/Cart/CartContext';
 
 export function Nav() {
   const { user, logout } = useAuthContext();
+  const { cartNoItems } = useCartContext();
 
   return(
     <nav>
@@ -23,8 +27,15 @@ export function Nav() {
 
         <li className="mr-4 hover:bg-blue-100">
         <NavLink 
-          className={({ isActive }) => `text-gray-600 hover:text-blue-500 block py-2 px-2 ${isActive ? 'bg-blue-200' : ''}`} 
-          to="cart">Cos de cumparaturi
+          className={({ isActive }) => `flex items-center text-gray-600 hover:text-blue-500 py-2 px-2 ${isActive ? 'bg-blue-200' : ''}`} 
+          to="cart">
+          <FaShoppingCart className="mr-2" /> 
+            Cos
+            { cartNoItems > 0 && (
+              <span className="ml-2 bg-red-500 text-white rounded-full px-2 py-1 text-xs">
+                {cartNoItems}
+              </span>
+            )}
         </NavLink>
         </li>
       </div>

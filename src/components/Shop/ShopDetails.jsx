@@ -78,10 +78,10 @@ export function ShopDetails() {
       return;
     }
     
-    cart.push(cartOrder);
-    fUpdateCart(cart);
+    const newCart = [...cart, cartOrder];
+    fUpdateCart(newCart);
     toast.success("Produsul a fost adaugat in cosul dvs.");
-    // console.log("AddToCart: ", cartOrder);
+    navigate(`/shop`);
   }
 
   function renderDisplayPrice(price) {

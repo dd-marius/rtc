@@ -7,7 +7,7 @@ const CartContext = createContext(null);
 
 // eslint-disable-next-line react/prop-types
 export function CartContextProvider({ children }) {
-  const [cart, setCart] = useLocalStorageState('cart', initialCart);
+  const [ cart, setCart ] = useLocalStorageState('cart', initialCart);
 
   const fUpdateCart = useCallback(
     (cart) => {
@@ -17,13 +17,14 @@ export function CartContextProvider({ children }) {
   );
 
   const fResetCart = useCallback(() => {
-    console.log("here");
     setCart(initialCart);
   }, [setCart]);
 
+  const cartNoItems = cart.length;
+
   const value = useMemo(() => {
-    return { cart, fUpdateCart, fResetCart};
-  }, [cart, fUpdateCart, fResetCart]);
+    return { cart, cartNoItems, fUpdateCart, fResetCart};
+  }, [cart, cartNoItems, fUpdateCart, fResetCart]);
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }

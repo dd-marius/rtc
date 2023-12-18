@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { MdDelete } from 'react-icons/md';
 import { Link } from "react-router-dom";
 
 export function CartItem({ item, onQuantityChange, onRemove }) {
@@ -25,7 +26,7 @@ export function CartItem({ item, onQuantityChange, onRemove }) {
       <td>{item.cartPrice.toFixed(2)} lei</td>
       <td>
         <button onClick={() => onRemove(item.shopId)} className="text-red-500 hover:text-red-700">
-          <i className="fas fa-times"></i>
+          <MdDelete />
         </button>
       </td>
     </tr>
