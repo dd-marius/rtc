@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form"
 import { toast } from 'react-toastify';
 
@@ -25,10 +25,10 @@ const v = Number(import.meta.env.VITE_UX_VERBOSITY)
 
 const schemaLogin = z.object({
   email: z.string().email({
-    message: "Please enter a valid email address.",
+    message: "Va rugam introduceti o adresa de email valida.",
   }),
   password: z.string().min(3, {
-    message: "Password must be at least 3 characters.",
+    message: "Parola trebuie sa contina minim 3 caractere.",
   }),
 })
 
@@ -100,6 +100,10 @@ export function AuthLogin() {
           </form>
         </Form>
       </div>
+      <div className="flex justify-center mt-4">
+            <p>Daca nu aveti cont va puteti <Link to="/register" className="text-blue-500 hover:text-blue-700">inregistra</Link>.</p>
+          </div>
+
     </div>
   )
 }

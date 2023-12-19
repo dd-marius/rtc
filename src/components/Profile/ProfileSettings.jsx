@@ -36,7 +36,7 @@ const schemaProfile = z.object({
         message: "Parola (pentru confirmare) trebuie sa contina minim 3 caractere.",
     }).optional().or(z.literal(''))
   }).refine((data) => data.newPassword === data.newPasswordConfirm, {
-    message: "Va rugam verificati ca parola noua sa corespunda in ambele campuri.",
+    message: "Va rugam verificati ca noua parola sa corespunda in ambele campuri.",
     path: ["newPasswordConfirm"],
 });
  

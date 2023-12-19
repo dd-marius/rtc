@@ -10,7 +10,7 @@
     },
     {
       "email": "m@rtc.ro",
-      "password": "$2a$10$HMttxRVgHH4KM5B1qCt9teR.fEbLYCUZRneaVUW8/QMxQ1puDrhbO",
+      "password": "$2a$10$YyiIu3B6WwFEgZC2hHVQDO/ZXpituw3.dhyHS9vEtWLht0alUZYNW",
       "nameFirst": "Marius",
       "nameLast": "Client",
       "id": 2,
@@ -26,11 +26,27 @@
     },
     {
       "email": "test@rtc.ro",
-      "password": "$2a$10$22zVmQPw4x3PDXGlcCTmc.tk2Y8DDsqvwfNsHXZ608Emp3e..B4Fe",
+      "password": "$2a$10$HK9/H8RWNgrlXSJznb0PoudFUlQCB4Xbc4FcO1IDpGYwGyX9EAVRi",
       "nameFirst": "Test",
       "nameLast": "User",
       "id": 4,
       "role": 2
+    },
+    {
+      "email": "test2@rtc.ro",
+      "password": "$2a$10$aYKxp9DhgW.c6vpXBlbn8ewFaSTn.67YgDN2jHuUko6EDG/JXDhFC",
+      "nameFirst": "Test2",
+      "nameLast": "Test2",
+      "role": 2,
+      "id": 5
+    },
+    {
+      "email": "test3@rtc.ro",
+      "password": "$2a$10$1JP7HsfKUjf4GZtc2TEvAuRp/eL6.kAsRxQMg1P75isqWV4Hxg57u",
+      "nameFirst": "Test3",
+      "nameLast": "Test3",
+      "role": 2,
+      "id": 6
     }
   ],
   "userCart": [

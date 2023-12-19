@@ -25,22 +25,22 @@ const v = Number(import.meta.env.VITE_UX_VERBOSITY)
 
 const schemaRegister = z.object({
   email: z.string().email({
-    message: "Please enter a valid email address.",
+    message: "Va rugam introduceti o adresa de email valida.",
   }),
   password: z.string().min(3, {
-    message: "Password must be at least 3 characters.",
+    message: "Parola trebuie sa contina minim 3 caractere.",
   }),
   retypePassword: z.string().min(3, {
-    message: "Password must be at least 3 characters.",
+    message: "Parola (pentru confirmare) trebuie sa contina minim 3 caractere.",
   }),
   nameFirst: z.string().min(3, {
-    message: "First Name must be at least 3 characters.",
+    message: "Prenumele trebuie sa contina minim 3 caractere.",
   }),  
   nameLast: z.string().min(3, {
-    message: "Last Name must be at least 3 characters.",
+    message: "Numele trebuie sa contina minim 3 caractere.",
   })
 }).refine((data) => data.password === data.retypePassword, {
-  message: "Passwords don't match",
+  message: "Parola trebuie sa fie identica in ambele campuri!",
   path: ["retypePassword"],
 });
 
@@ -65,7 +65,9 @@ export function AuthRegister() {
     async function onSubmit(values) {
       // eslint-disable-next-line no-unused-vars
       const { retypePassword, ...dataForServer } = values;
-
+      // Append default role for new users
+      dataForServer.role = 2;
+      
       const data = await post(dataForServer);
     
       // If we have an access token we save it to local storage (registration has been succesful)

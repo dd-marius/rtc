@@ -80,7 +80,6 @@ export function Cart() {
 
   
   async function handlePlaceOrder() {
-    console.log("Place order");
     // Extract the selected address from "DB" to store in order (avoid address changing after order has been placed)
     const address = userAddresses.find(address => address.id === selectedAddress);
     // Build order object
