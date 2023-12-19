@@ -1,5 +1,6 @@
 # App
 #.env
+.env.production
 
 # Logs
 logs
